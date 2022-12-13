@@ -1,9 +1,32 @@
-/** This is a custom fetecher for the GraphQL codegen
- * It checks if the user is logged in and if so, it adds the auth token to the request
- * It also sets the fetchParams.headers to an object containing application/json as the Content-Type
- * And sets the endpoint to "https://api.lens.dev/"
- */
-const endpoint = "https://api.lens.dev/";
+import {
+  readAccessTokenFromStorage,
+  isTokenExpired,
+} from "./src/lib/auth/helpers";
+import refreshAccessToken from "./src/lib/auth/refreshAccessToken";
+
+export const endpoint = "https://api.lens.dev/";
+export const STORAGE_KEY = "LH_STORAGE_KEY";
+
+async function getAccessToken(): Promise<string | null> {
+  const tokenValue = readAccessTokenFromStorage();
+
+  // If the token is not in localStorage, then the user is not logged in
+  if (!tokenValue) {
+    return null;
+  }
+
+  let accessTokenValue = tokenValue.accessToken;
+
+  // If the exp is less than the current time, then the token has expired
+  if (isTokenExpired(tokenValue.exp)) {
+    console.log("Token has expired. Refreshing token...");
+    // If the token has expired, then we need to refresh the token
+    accessTokenValue = await refreshAccessToken();
+  }
+
+  // If the token has not expired, then we can use the accessToken
+  return accessTokenValue;
+}
 
 export const fetchData = <TData, TVariables>(
   query: string,
@@ -11,12 +34,18 @@ export const fetchData = <TData, TVariables>(
   options?: RequestInit["headers"]
 ): (() => Promise<TData>) => {
   return async () => {
+    const accessToken = await getAccessToken();
+
     const res = await fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         ...(options ?? {}),
-        // TODO: Auth here
+        ...(accessToken
+          ? {
+              "x-access-token": `Bearer ${accessToken}`,
+            }
+          : {}),
       },
       body: JSON.stringify({
         query,

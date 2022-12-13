@@ -5,12 +5,9 @@ generates:
     plugins:
       - typescript
       - typescript-operations
-      # - typed-document-node
       - typescript-react-query
       - fragment-matcher
     config:
-      # fetcher: fetch
-      dedupeFragments: true
       fetcher:
         func: "../../auth-fetcher#fetchData"
         isReactHook: false
