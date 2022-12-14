@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAddress, useSDK } from "@thirdweb-dev/react";
 import { useGetAccessTokenMutation } from "../../graphql/generated";
 import generateChallenge from "./generateChallenge";
@@ -13,6 +13,7 @@ import { setAccessTokenToStorage } from "./helpers";
 export default function useLogin() {
   const sdk = useSDK();
   const address = useAddress();
+  const queryClient = useQueryClient();
 
   const { mutateAsync: getAccessToken } = useGetAccessTokenMutation();
 
@@ -55,6 +56,11 @@ export default function useLogin() {
 
     // Store the access token in local storage
     setAccessTokenToStorage(accessToken, refreshToken);
+
+    // Invalidate the query so that the user is logged in
+    queryClient.invalidateQueries({
+      queryKey: ["lensUser"],
+    });
   }
 
   // Return a useMutation hook that will call the login function

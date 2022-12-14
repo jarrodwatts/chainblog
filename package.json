@@ -10,6 +10,13 @@
     "codegen": "graphql-codegen"
   },
   "dependencies": {
+    "@emotion/cache": "latest",
+    "@emotion/react": "latest",
+    "@emotion/server": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "latest",
+    "@next/font": "latest",
     "@tanstack/react-query": "^4.19.1",
     "@thirdweb-dev/react": "^3.6.7",
     "@thirdweb-dev/sdk": "^3.6.7",
@@ -21,13 +28,6 @@
     "ethers": "^5.7.2",
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
-    "@emotion/cache": "latest",
-    "@emotion/react": "latest",
-    "@emotion/server": "latest",
-    "@emotion/styled": "latest",
-    "@mui/icons-material": "latest",
-    "@mui/material": "latest",
-    "@next/font": "latest",
     "next": "13.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"

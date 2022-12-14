@@ -8,6 +8,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThirdwebProvider, ChainId } from "@thirdweb-dev/react";
 import theme from "../lib/mui/theme";
 import createEmotionCache from "../lib/mui/createEmotionCache";
+import Header from "../components/landing/header/Header";
+import LensUserContextProvider from "../context/LensUserContext";
+import { useRouter } from "next/router";
+import HeaderGap from "../components/landing/header/HeaderGap";
 
 // thirwdeb setup
 const desiredChainId = ChainId.Polygon;
@@ -24,22 +28,27 @@ interface MyAppProps extends AppProps {
 
 export default function App(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const router = useRouter();
 
   return (
     <CacheProvider value={emotionCache}>
       <ThirdwebProvider desiredChainId={desiredChainId}>
         <QueryClientProvider client={queryClient}>
-          <Head>
-            <meta
-              name="viewport"
-              content="initial-scale=1, width=device-width"
-            />
-          </Head>
-          <ThemeProvider theme={theme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            <Component {...pageProps} />
-          </ThemeProvider>
+          <LensUserContextProvider>
+            <Head>
+              <meta
+                name="viewport"
+                content="initial-scale=1, width=device-width"
+              />
+            </Head>
+            <ThemeProvider theme={theme}>
+              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+              <CssBaseline />
+              <Header />
+              {router.pathname !== "/" && <div style={{ height: 96 }} />}
+              <Component {...pageProps} />
+            </ThemeProvider>
+          </LensUserContextProvider>
         </QueryClientProvider>
       </ThirdwebProvider>
     </CacheProvider>

@@ -8,6 +8,7 @@ generates:
       - typescript-react-query
       - fragment-matcher
     config:
+      dedupeFragments: true
       fetcher:
         func: "../../auth-fetcher#fetchData"
         isReactHook: false
