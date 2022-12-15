@@ -1,6 +1,6 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import { MediaRenderer } from "@thirdweb-dev/react";
+import { MediaRenderer, Web3Button } from "@thirdweb-dev/react";
 import React from "react";
 import { ProfileQuery } from "../../graphql/generated";
 import styles from "./profile.module.css";
@@ -9,6 +9,8 @@ import {
   defaultCoverPhoto,
   defaultProfilePicture,
 } from "../../../const/images";
+import { LENS_CONTRACT_ADDRESS } from "../../../const/blockchain";
+import { LENS_ABI } from "../../../const/abis";
 
 type Props = {
   profile: ProfileQuery;
@@ -40,9 +42,14 @@ export default function ProfileHeader({ profile }: Props) {
               className={styles.profilePhoto}
             />
 
-            <Button variant="contained" className={styles.followButton}>
+            <Web3Button
+              contractAddress={LENS_CONTRACT_ADDRESS}
+              contractAbi={LENS_ABI}
+              action={() => {}}
+              className={styles.followButton}
+            >
               {profile.profile?.isFollowedByMe ? "Unfollow" : "Follow"}
-            </Button>
+            </Web3Button>
           </div>
 
           <Typography variant="h1" className={styles.profileName}>

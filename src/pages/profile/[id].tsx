@@ -1,17 +1,15 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import React from "react";
 import { fetchData } from "../../../auth-fetcher";
-import ProfileFeed from "../../components/profile/ProfileFeed";
-import ProfileHeader from "../../components/profile/ProfileHeader";
 import ProfileView from "../../components/profile/ProfileView";
 import {
   ProfileDocument,
   ProfileQuery,
   ProfileQueryVariables,
-  PublicationMainFocus,
   PublicationsDocument,
   PublicationsQuery,
   PublicationsQueryVariables,
+  PublicationTypes,
 } from "../../graphql/generated";
 
 type Props = {
@@ -42,8 +40,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     request: {
       profileId: profileQueryResult.profile?.id,
       metadata: {
-        mainContentFocus: [PublicationMainFocus.Article],
+        // mainContentFocus: [PublicationMainFocus.Article],
       },
+      publicationTypes: [PublicationTypes.Post],
     },
   })();
 

@@ -14,26 +14,20 @@ type Props = {
 export default function PostHeader({ publication }: Props) {
   return (
     <div className={styles.postHeaderContainer}>
-      <Link
-        href={`/profile/${publication.publication?.profile.handle}`}
-        className={styles.unstyledLink}
-      >
-        <MediaRenderer
-          src={
-            publication?.publication?.metadata?.media?.[0]?.original?.url ||
-            // @ts-ignore: Type does exist.
-            publication.publication?.profile.coverPicture?.original?.url ||
-            // @ts-ignore: Type does exist.
-            publication.publication?.profile.picture?.original?.url ||
-            ""
-          }
-          className={styles.postImage}
-          alt={
-            publication?.publication?.metadata?.name ||
-            "Publication cover image"
-          }
-        />
-      </Link>
+      <MediaRenderer
+        src={
+          publication?.publication?.metadata?.media?.[0]?.original?.url ||
+          // @ts-ignore: Type does exist.
+          publication.publication?.profile.coverPicture?.original?.url ||
+          // @ts-ignore: Type does exist.
+          publication.publication?.profile.picture?.original?.url ||
+          ""
+        }
+        className={styles.postImage}
+        alt={
+          publication?.publication?.metadata?.name || "Publication cover image"
+        }
+      />
 
       <Typography variant="h1" className={styles.postTitle}>
         {publication?.publication?.metadata?.name}

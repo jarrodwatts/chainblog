@@ -9,9 +9,10 @@ import useLensUser from "../../lib/auth/useLensUser";
 export default function FeedController() {
   const { personalFeedQuery, defaultFeedQuery } = useDynamicFeed();
 
-  const { isSignedIn } = useLensUser();
+  const { isSignedIn, hasProfile } = useLensUser();
 
-  if (isSignedIn && personalFeedQuery?.isLoading) {
+  // Loading user's personalised feed
+  if (isSignedIn && hasProfile && personalFeedQuery?.isLoading) {
     return (
       <Container maxWidth="md" className={styles.feedContainer}>
         <Grid container direction="column" spacing={2}>
@@ -25,6 +26,7 @@ export default function FeedController() {
     );
   }
 
+  // Loaded the user's personalised feed
   if (personalFeedQuery?.data) {
     return (
       <Container maxWidth="md" className={styles.feedContainer}>
@@ -56,6 +58,7 @@ export default function FeedController() {
     );
   }
 
+  // Loaded the default feed
   if (defaultFeedQuery?.data) {
     return (
       <Container maxWidth="md" className={styles.feedContainer}>
@@ -85,6 +88,7 @@ export default function FeedController() {
     );
   }
 
+  // Loading either of them
   if (defaultFeedQuery?.isLoading || personalFeedQuery?.isLoading) {
     return (
       <Container maxWidth="md" className={styles.feedContainer}>

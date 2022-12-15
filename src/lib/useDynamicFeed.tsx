@@ -1,9 +1,4 @@
-import {
-  FeedEventItemType,
-  PublicationMainFocus,
-  PublicationSortCriteria,
-  PublicationTypes,
-} from "../graphql/generated";
+import { PublicationSortCriteria } from "../graphql/generated";
 import useLensUser from "./auth/useLensUser";
 import useInfiniteExplorePublications from "./useInfiniteExplorePublications";
 import useInfiniteProfileFeedQuery from "./useInfiniteProfileFeed";
@@ -14,7 +9,7 @@ import useInfiniteProfileFeedQuery from "./useInfiniteProfileFeed";
  */
 export default function useDynamicFeed() {
   // 1. Get the current user
-  const { data: lensUser, isLoading: loadingUser, isSignedIn } = useLensUser();
+  const { data: lensUser, isSignedIn, hasProfile } = useLensUser();
 
   // 2. If there is a user, fetch the feed for that user
   const personalFeedQuery = useInfiniteProfileFeedQuery(
@@ -22,9 +17,9 @@ export default function useDynamicFeed() {
       request: {
         profileId: lensUser?.defaultProfile?.id,
         metadata: {
-          mainContentFocus: [PublicationMainFocus.Article],
+          // mainContentFocus: [PublicationMainFocus.Article],
         },
-        feedEventItemTypes: [FeedEventItemType.Post],
+        // feedEventItemTypes: [FeedEventItemType.Post],
         /**
          * https://docs.lens.xyz/docs/profile-feed
          * Please note the limit is the number of EVENTS you get back.
@@ -36,7 +31,7 @@ export default function useDynamicFeed() {
     },
     {
       // Fire if there is a user
-      enabled: !!lensUser?.defaultProfile?.id,
+      enabled: hasProfile,
       // Only fire once
       refetchOnWindowFocus: false,
       refetchOnMount: false,
@@ -50,8 +45,6 @@ export default function useDynamicFeed() {
     }
   );
 
-  console.log(personalFeedQuery.data?.pages);
-
   // 3. If there is no user, show a default feed
   const defaultFeedQuery = useInfiniteExplorePublications(
     {
@@ -59,14 +52,14 @@ export default function useDynamicFeed() {
         sortCriteria: PublicationSortCriteria.TopCollected,
         limit: 50,
         metadata: {
-          mainContentFocus: [PublicationMainFocus.Article],
+          // mainContentFocus: [PublicationMainFocus.Article],
         },
-        publicationTypes: [PublicationTypes.Post],
+        // publicationTypes: [PublicationTypes.Post],
       },
     },
     {
       // Fire if there is no user (and not loading the user)
-      enabled: !isSignedIn || (!lensUser?.defaultProfile?.id && !loadingUser),
+      enabled: !isSignedIn || (isSignedIn && !hasProfile),
       // Only fire once
       refetchOnWindowFocus: false,
       refetchOnMount: false,

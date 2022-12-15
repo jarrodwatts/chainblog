@@ -90,8 +90,7 @@
   font-size: 1rem;
   text-decoration: none;
   height: 48px;
-  /* Background gradient of button between yellow and green */
-  background: linear-gradient(90deg, #9e61ff 0%, #619bff 100%) right;
+  background: linear-gradient(90deg, #9e61ff 0%, #619bff 100%) right !important;
   background-size: 200% 100%;
   color: #fff;
   transition: all 0.5s ease;
