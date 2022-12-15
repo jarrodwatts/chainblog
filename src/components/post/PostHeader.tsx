@@ -2,6 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import { MediaRenderer } from "@thirdweb-dev/react";
 import Link from "next/link";
 import React from "react";
+import { defaultProfilePicture } from "../../../const/images";
 import { PublicationQuery } from "../../graphql/generated";
 import { getFormattedDate } from "../../lib/helper/dates";
 import styles from "./post.module.css";
@@ -48,7 +49,8 @@ export default function PostHeader({ publication }: Props) {
             <MediaRenderer
               src={
                 // @ts-ignore: Type does exist.
-                publication?.publication?.profile?.picture?.original?.url || ""
+                publication?.publication?.profile?.picture?.original?.url ||
+                defaultProfilePicture
               }
               className={styles.authorProfilePicture}
               alt={
