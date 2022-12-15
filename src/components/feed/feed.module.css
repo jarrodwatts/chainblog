@@ -1,5 +1,9 @@
 .feedContainer {
   margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .feedItemWrapper {
@@ -7,6 +11,8 @@
 }
 
 .feedItem {
+  text-decoration: none;
+  color: inherit;
   max-width: 100;
   display: flex;
   flex-direction: column;
@@ -19,6 +25,7 @@
   background: #1d1d1d;
   position: relative;
   border-radius: 0.5rem;
+  height: auto;
 }
 
 .feedItem:hover {
@@ -63,6 +70,16 @@
   font-size: 1.5rem;
 }
 
+.blogDescription {
+}
+
+/* Don't show blog description on mobile */
+@media only screen and (max-width: 1000px) {
+  .blogDescription {
+    display: none;
+  }
+}
+
 .blogImage {
   width: 100% !important;
 }
@@ -84,6 +101,11 @@
 .metricText {
   margin-left: 0.2em;
   margin-right: 8px;
+}
+
+.reachedEnd {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 @keyframes animatedgradient {

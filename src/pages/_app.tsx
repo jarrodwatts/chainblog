@@ -11,7 +11,7 @@ import createEmotionCache from "../lib/mui/createEmotionCache";
 import Header from "../components/landing/header/Header";
 import LensUserContextProvider from "../context/LensUserContext";
 import { useRouter } from "next/router";
-import HeaderGap from "../components/landing/header/HeaderGap";
+import NextNProgress from "nextjs-progressbar";
 
 // thirwdeb setup
 const desiredChainId = ChainId.Polygon;
@@ -44,6 +44,7 @@ export default function App(props: MyAppProps) {
             <ThemeProvider theme={theme}>
               {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
               <CssBaseline />
+              <NextNProgress color={theme.palette.primary.main} />
               <Header />
               {router.pathname !== "/" && <div style={{ height: 96 }} />}
               <Component {...pageProps} />

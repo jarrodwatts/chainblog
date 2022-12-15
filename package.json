@@ -29,8 +29,11 @@
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
     "next": "13.0.6",
+    "nextjs-progressbar": "^0.0.16",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-markdown": "^8.0.4",
+    "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.16.1",
@@ -40,6 +43,7 @@
     "@graphql-codegen/typescript": "^2.8.5",
     "@graphql-codegen/typescript-operations": "^2.5.10",
     "@graphql-codegen/typescript-react-query": "^4.0.6",
+    "@types/react-syntax-highlighter": "^15.5.5",
     "autoprefixer": "^10.4.13"
   }
 }

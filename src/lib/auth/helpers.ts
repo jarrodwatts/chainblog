@@ -19,8 +19,13 @@ export function readAccessTokenFromStorage(): {
   refreshToken: string;
   exp: number;
 } | null {
+  // If on the server, return null
+  if (typeof window === "undefined") {
+    return null;
+  }
+
   // Logic: Read the STORAGE_KEY from localStorage, which will return:
-  const ls = localStorage || window.localStorage;
+  const ls = localStorage || window?.localStorage;
 
   if (!ls) {
     console.error(
@@ -45,7 +50,7 @@ export function setAccessTokenToStorage(
   accessToken: string,
   refreshToken: string
 ) {
-  const ls = localStorage || window.localStorage;
+  const ls = localStorage || window?.localStorage;
 
   const exp = parseJwt(refreshToken).exp;
 

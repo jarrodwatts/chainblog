@@ -33,7 +33,7 @@ export default function useLensUser() {
   }, [localStorageQuery.data, address]);
 
   return {
-    isSignedIn: !!localStorageQuery.data,
+    isSignedIn: !!address && !!localStorageQuery.data,
     ...lensProfileQuery,
   };
 }

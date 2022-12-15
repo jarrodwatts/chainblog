@@ -1,0 +1,117 @@
+.profileHeaderContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.profileMetadataContainer {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  z-index: 3;
+}
+
+.pictureAndActionsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.handleAndFollowsYouContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  height: 36px;
+  margin-bottom: 4px;
+  margin-top: 8px;
+}
+
+.coverPhoto {
+  width: 100%;
+  --coverPhotoHeight: 256px;
+  max-height: var(--coverPhotoHeight);
+  object-fit: cover;
+}
+
+.imageWithGradient {
+  position: relative;
+  z-index: 2;
+}
+
+.imageWithGradient img {
+  width: 100%;
+  height: 100%;
+}
+
+.imageWithGradient .gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(9, 9, 9, 0), #090909);
+}
+
+.profilePhoto {
+  height: 172px;
+  width: 172px;
+  border-radius: 50%;
+  border: 4px solid #090909;
+  margin-top: -5em;
+  z-index: 3;
+}
+
+.profileName {
+  font-size: 2.5rem;
+  margin-top: 12px;
+}
+
+.profileHandle {
+  height: 100%;
+}
+.followsYouPill {
+  height: 100%;
+  margin-bottom: 6px;
+  height: 32px;
+}
+
+.description {
+}
+
+.followButton {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #0d0a1e;
+  border: 1px solid #0d0a1e;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  text-decoration: none;
+  height: 48px;
+  /* Background gradient of button between yellow and green */
+  background: linear-gradient(90deg, #9e61ff 0%, #619bff 100%) right;
+  background-size: 200% 100%;
+  color: #fff;
+  transition: all 0.5s ease;
+}
+
+.followButton:hover {
+  background-position: left;
+  transition: all 0.5s ease;
+  /* increase in size */
+  transform: scale(1.1);
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

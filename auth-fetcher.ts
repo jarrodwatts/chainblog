@@ -19,7 +19,6 @@ async function getAccessToken(): Promise<string | null> {
 
   // If the exp is less than the current time, then the token has expired
   if (isTokenExpired(tokenValue.exp)) {
-    console.log("Token has expired. Refreshing token...");
     // If the token has expired, then we need to refresh the token
     accessTokenValue = await refreshAccessToken();
   }

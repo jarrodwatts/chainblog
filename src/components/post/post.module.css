@@ -1,0 +1,48 @@
+.postHeaderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.postImage {
+  width: 100%;
+  object-fit: cover;
+  align-self: center;
+  max-height: 320px;
+}
+
+.postTitle {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.postMetadataContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.authorProfilePicture {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.authorName {
+  font-weight: 600;
+}
+
+.secondaryMetadata {
+}
+
+.unstyledLink {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}

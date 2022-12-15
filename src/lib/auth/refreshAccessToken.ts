@@ -14,8 +14,6 @@ export default async function refreshAccessToken(): Promise<string> {
 
   const { accessToken, refreshToken } = newTokenResult.refresh;
 
-  console.log({ accessToken, refreshToken });
-
   // Set in local storage
   setAccessTokenToStorage(accessToken, refreshToken);
   return accessToken as string;

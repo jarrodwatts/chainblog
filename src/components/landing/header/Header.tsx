@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <>
       <div className={styles.header}>
-        <Link href="/">
+        <Link href="/feed">
           {/*  eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo.png" alt="logo" height={56} />
         </Link>

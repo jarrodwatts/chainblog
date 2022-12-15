@@ -36,13 +36,8 @@ export default function useLogin() {
       return null;
     }
 
-    console.log("Logging in...");
-    console.log("Challenge:", challenge);
-
     // Sign the challenge message
     const signature = await sdk?.wallet?.sign(challenge.text);
-
-    console.log("Requesting access token:", { address, signature });
 
     // Now, send the challenge and signature to the Lens API to get an access token
     const { accessToken, refreshToken } = (

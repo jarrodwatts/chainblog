@@ -28,3 +28,16 @@ export const getRelativeTime = (dateString: string) => {
   }
   return Math.floor(seconds) + " seconds ago";
 };
+
+/**
+ * Takes in a string in the format: 2022-12-13T10:12:17.000Z
+ * And converts it to a date such as "Dec 13, 2022"
+ */
+export const getFormattedDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+};
