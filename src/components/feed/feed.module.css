@@ -25,7 +25,7 @@
   background: #1d1d1d;
   position: relative;
   border-radius: 0.5rem;
-  height: auto;
+  min-height: fit-content;
 }
 
 .feedItem:hover {

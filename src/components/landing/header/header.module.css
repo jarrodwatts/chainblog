@@ -17,6 +17,14 @@
   background-color: transparent;
 }
 
+.left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
 .ctaButton {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -35,4 +43,6 @@
 .ctaLink {
   text-decoration: none;
   color: inherit;
+  font-weight: 600;
+  font-size: 1.15rem;
 }

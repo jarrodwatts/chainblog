@@ -1,0 +1,78 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.authorCardContainer {
+  margin-top: 2rem;
+}
+
+.authorCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  min-height: 192px;
+  border: 1px solid rgba(234, 234, 234, 0.3);
+  background-color: #141414;
+  height: 100%;
+}
+
+.coverPhotoContainer {
+  width: 100%;
+  z-index: 1;
+  height: 128px;
+}
+
+.profilePhotoContainer {
+  /* Should be half inside the cover photo container */
+  margin-top: -2.3em;
+  z-index: 2;
+}
+
+.name {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.handle {
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.loadMore {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.followButton {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  color: #0d0a1e;
+  border: 1px solid #0d0a1e;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  text-decoration: none;
+  height: 48px;
+  background: linear-gradient(90deg, #9e61ff 0%, #619bff 100%) right !important;
+  background-size: 200% 100%;
+  color: #fff;
+  transition: all 0.5s ease;
+}
+
+.followButton:hover {
+  background-position: left;
+  transition: all 0.5s ease;
+  /* increase in size */
+  transform: scale(1.1);
+  z-index: 3;
+}
+
+.unstyledLink {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
