@@ -12,9 +12,7 @@ export default function ProfileFeed({ posts }: Props) {
     <Container maxWidth="md" style={{ marginTop: 36 }}>
       <Grid container direction="column" spacing={2}>
         {posts?.publications?.items?.map((post) => (
-          <Grid item xs={12} key={post.id}>
-            <ProfileFeedItem post={post} />
-          </Grid>
+          <ProfileFeedItem post={post} key={post.id} />
         ))}
       </Grid>
     </Container>
