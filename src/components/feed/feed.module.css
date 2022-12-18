@@ -13,7 +13,7 @@
 .feedItem {
   text-decoration: none;
   color: inherit;
-  max-width: 100;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -25,7 +25,8 @@
   background: #1d1d1d;
   position: relative;
   border-radius: 0.5rem;
-  min-height: fit-content;
+  height: auto;
+  margin-top: 12px;
 }
 
 .feedItem:hover {

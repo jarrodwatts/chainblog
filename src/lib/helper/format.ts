@@ -5,13 +5,17 @@
  * and limits the length to 100 characters.
  */
 export function getPreviewText(markdown: string) {
-  return (
-    markdown
-      .replace(/[\*_\[\]\(\)]/g, "") // Remove markdown formatting
-      .replace(/(\r|\n|\r)/gm, " ") // Replace newlines with spaces
-      .replace(/^(#+\s)/gm, "")
-      .replace(/^(?:[-*]\s)/gm, "")
-      .substring(0, 300)
-      .trim() + "..."
-  );
+  if (markdown.length > 300) {
+    return (
+      markdown
+        .replace(/[\*_\[\]\(\)]/g, "") // Remove markdown formatting
+        .replace(/(\r|\n|\r)/gm, " ") // Replace newlines with spaces
+        .replace(/^(#+\s)/gm, "")
+        .replace(/^(?:[-*]\s)/gm, "")
+        .substring(0, 300)
+        .trim() + "..."
+    );
+  }
+
+  return markdown;
 }

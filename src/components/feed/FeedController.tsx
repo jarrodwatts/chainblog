@@ -11,6 +11,15 @@ export default function FeedController() {
 
   const { isSignedIn, hasProfile } = useLensUser();
 
+  console.log({
+    pf: personalFeedQuery.data,
+    pfl: personalFeedQuery.isLoading,
+    pfe: personalFeedQuery.error,
+    df: defaultFeedQuery.data,
+    dfl: defaultFeedQuery.isLoading,
+    dfe: defaultFeedQuery.error,
+  });
+
   // Loading user's personalised feed
   if (isSignedIn && hasProfile && personalFeedQuery?.isLoading) {
     return (
@@ -28,16 +37,21 @@ export default function FeedController() {
 
   // Loaded the user's personalised feed
   if (personalFeedQuery?.data) {
+    console.log(personalFeedQuery.data);
+
     return (
       <Container maxWidth="md" className={styles.feedContainer}>
-        <Grid container direction="column" spacing={2}>
+        <Grid
+          container
+          direction="column"
+          spacing={2}
+          className={styles.feedItemWrapper}
+        >
           {
             // Get all the posts out of all the pages and map them
             personalFeedQuery.data?.pages.flatMap((page) =>
               page.feed.items.map((post) => (
-                <Grid item xs={12} key={post.root.id}>
-                  <FeedItemComponent post={post.root} />
-                </Grid>
+                <FeedItemComponent post={post.root} key={post.root.id} />
               ))
             )
           }
@@ -62,13 +76,16 @@ export default function FeedController() {
   if (defaultFeedQuery?.data) {
     return (
       <Container maxWidth="md" className={styles.feedContainer}>
-        <Grid container direction="column" spacing={2}>
+        <Grid
+          container
+          direction="column"
+          spacing={2}
+          className={styles.feedItemWrapper}
+        >
           {defaultFeedQuery.data?.pages?.flatMap((page) =>
             page.explorePublications.items.map((post) => (
-              <Grid item xs={12} key={post.id}>
-                {/* @ts-ignore TODO: Type is wrong here. */}
-                <FeedItemComponent post={post} />
-              </Grid>
+              // @ts-ignore TODO: Type is wrong here.
+              <FeedItemComponent post={post} key={post.id} />
             ))
           )}
         </Grid>

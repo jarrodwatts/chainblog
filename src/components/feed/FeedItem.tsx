@@ -20,6 +20,7 @@ export default function FeedItemComponent({ post }: Props) {
     <Link href={`/post/${post.id}`} className={styles.feedItem}>
       <Grid
         container
+        item
         direction="row"
         alignItems="center"
         justifyContent="space-between"
