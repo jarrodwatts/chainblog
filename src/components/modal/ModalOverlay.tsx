@@ -14,6 +14,7 @@ import { CHAIN_ID } from "../../../const/blockchain";
 
 export default function ModalOverlay() {
   const { modalState, setModalState } = useGlobalInformationModalContext();
+
   const { mutateAsync: login } = useLogin();
   const address = useAddress();
   const isOnWrongNetwork = useNetworkMismatch();
@@ -53,40 +54,58 @@ export default function ModalOverlay() {
           <Typography variant="body1">{modalState.message}</Typography>
         </Grid>
 
-        {/* Subheading */}
-        <Grid item className={styles.subheadingContainer}>
-          <Typography variant="body1">
-            Try signing in, and trying again.
-          </Typography>
-        </Grid>
-
         {/* Sign in button */}
         {modalState.type === "login" ||
-          (modalState.type === "error" && (
-            <Grid item className={styles.actionButtonContainer}>
-              {
-                // If no address
-                !address ? (
-                  <ConnectWallet />
-                ) : // If on wrong network
-                isOnWrongNetwork ? (
-                  <Button
-                    variant="contained"
-                    onClick={() => switchNetwork?.(CHAIN_ID)}
-                  >
-                    Switch Network
-                  </Button>
-                ) : (
-                  // If on correct network
-                  <Button
-                    variant="contained"
-                    onClick={() => login().then(() => setModalState(null))}
-                  >
-                    Sign In
-                  </Button>
-                )
-              }
-            </Grid>
+          (modalState.type === "error" ? (
+            <>
+              <Grid item className={styles.subheadingContainer}>
+                <Typography variant="body1">
+                  Try signing in, and trying again.
+                </Typography>
+              </Grid>
+
+              <Grid item className={styles.actionButtonContainer}>
+                {
+                  // If no address
+                  !address ? (
+                    <ConnectWallet className={styles.actionButton} />
+                  ) : // If on wrong network
+                  isOnWrongNetwork ? (
+                    <Button
+                      variant="contained"
+                      onClick={() => switchNetwork?.(CHAIN_ID)}
+                      className={styles.actionButton}
+                    >
+                      Switch Network
+                    </Button>
+                  ) : (
+                    // If on correct network
+                    <Button
+                      variant="contained"
+                      onClick={() => login().then(() => setModalState(null))}
+                      className={styles.actionButton}
+                    >
+                      Sign In
+                    </Button>
+                  )
+                }
+              </Grid>
+            </>
+          ) : (
+            modalState.actionBtnInfo && (
+              <Grid item className={styles.actionButtonContainer}>
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    modalState?.actionBtnInfo?.onClick?.();
+                    setModalState(null);
+                  }}
+                  className={styles.actionButton}
+                >
+                  {modalState.actionBtnInfo.text}
+                </Button>
+              </Grid>
+            )
           ))}
       </Grid>
     </div>

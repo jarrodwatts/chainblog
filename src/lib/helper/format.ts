@@ -53,3 +53,7 @@ export async function signTypedDataWithOmittedTypenames(
 export const splitSignature = (signature: string) => {
   return ethers.utils.splitSignature(signature);
 };
+
+export function capitalize(string: string): string {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}

@@ -2,10 +2,12 @@ import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { Container } from "@mui/system";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import styles from "./hero.module.css";
 
 export default function Hero() {
+  const router = useRouter();
   return (
     <div className={styles.container}>
       <Container maxWidth="lg" className={styles.contentContainer}>
@@ -25,6 +27,8 @@ export default function Hero() {
           color="secondary"
           variant="contained"
           className={styles.ctaButton}
+          // TODO: probs bad
+          onClick={() => router.push("/feed")}
         >
           <Link href="/feed" className={styles.ctaLink}>
             Get Started 🌿

@@ -17,6 +17,8 @@ type Props = {
 };
 
 export default function ProfileHeader({ profile }: Props) {
+  console.log(profile);
+
   return (
     <Container maxWidth="md">
       <div className={styles.profileHeaderContainer}>

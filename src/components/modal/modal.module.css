@@ -24,6 +24,7 @@
   background-color: #1d1d1d;
   padding: 16px;
   padding-top: 32px;
+  text-align: center;
 }
 
 .subheadingContainer {
@@ -51,4 +52,28 @@
 
 .actionButtonContainer {
   margin-top: 16px;
+}
+
+.actionButton {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  color: #0d0a1e;
+  border: 1px solid #0d0a1e;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  text-decoration: none;
+  height: 48px;
+  background: linear-gradient(90deg, #9e61ff 0%, #619bff 100%) right !important;
+  background-size: 200% 100%;
+  color: #fff;
+  transition: all 0.5s ease;
+}
+
+.actionButton:hover {
+  background-position: left;
+  transition: all 0.5s ease;
+  /* increase in size */
+  transform: scale(1.1);
+  z-index: 3;
 }

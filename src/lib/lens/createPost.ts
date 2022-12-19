@@ -18,8 +18,8 @@ import { useContract, useSDK } from "@thirdweb-dev/react";
 import { LENS_CONTRACT_ADDRESS } from "../../../const/blockchain";
 import { LENS_ABI } from "../../../const/abis";
 import { useMutation } from "@tanstack/react-query";
-import useLogin from "../auth/useLogin";
 import { useGlobalInformationModalContext } from "../../context/GlobalInformationModalContext";
+import { useRouter } from "next/router";
 
 async function createPostTypedData(request: CreatePublicPostRequest) {
   const result = await fetchData<
@@ -82,7 +82,6 @@ export default async function createPost(
     name: postMetadata.title,
     attributes: [],
     tags: postMetadata.tags || [],
-    // appId: "api_examples_github",
   });
 
   const signedResult = await signCreatePostTypedData(sdk, {
@@ -129,6 +128,7 @@ export function useCreatePost() {
   const { data: lensProfile } = useLensUserContext();
   const { setModalState } = useGlobalInformationModalContext();
   const { contract } = useContract(LENS_CONTRACT_ADDRESS, LENS_ABI);
+  const router = useRouter();
 
   return useMutation(
     (postMetadata: Record<string, any>) =>
@@ -138,6 +138,17 @@ export function useCreatePost() {
         setModalState({
           type: "error",
           message: ((error as Error).message as string) || "",
+        });
+      },
+      onSuccess: async () => {
+        setModalState({
+          type: "success",
+          message: "Post created successfully!",
+          actionBtnInfo: {
+            onClick: () =>
+              router.push(`/profile/${lensProfile?.defaultProfile?.handle}`),
+            text: "View Profile",
+          },
         });
       },
     }

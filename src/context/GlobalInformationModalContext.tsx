@@ -3,11 +3,19 @@ import { createContext, useContext } from "react";
 export type ModalState = {
   type: "login" | "success" | "error";
   message: string;
+  actionBtnInfo?: {
+    onClick: () => void;
+    text: string;
+  };
 };
 
 const GlobalInformationModalContext = createContext<{
   modalState: ModalState | null;
   setModalState: (modalState: ModalState | null) => void;
+  actionBtnInfo?: {
+    onClick: () => void;
+    text: string;
+  };
 }>({
   modalState: null,
   setModalState: () => {},

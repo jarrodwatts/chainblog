@@ -14,9 +14,9 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import LinkIcon from "@mui/icons-material/Link";
 import ImageIcon from "@mui/icons-material/Image";
-import capitalize from "@mui/material/utils/capitalize";
 import { EditorTab } from "./CreateContainer";
 import decorateMarkdown from "../../lib/markdown/decorateMarkdown";
+import { capitalize } from "../../lib/helper/format";
 
 const tabs = [
   {

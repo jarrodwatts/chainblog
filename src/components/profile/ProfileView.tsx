@@ -9,6 +9,7 @@ type Props = {
 };
 
 export default function ProfileView({ profile, posts }: Props) {
+  console.log(posts);
   return (
     <>
       <ProfileHeader profile={profile} />

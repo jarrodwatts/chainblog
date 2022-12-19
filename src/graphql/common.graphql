@@ -105,6 +105,7 @@ fragment MetadataOutputFields on MetadataOutput {
   name
   description
   content
+  image
   media {
     original {
       ...MediaFields
@@ -126,16 +127,16 @@ fragment MetadataOutputFields on MetadataOutput {
       encryptionKey
     }
     accessCondition {
-        ...AccessConditionFields
+      ...AccessConditionFields
     }
     encryptedFields {
-        animation_url
-        content
-        external_url
-        image
-        media {
-            ...EncryptedMediaSetFields
-        }
+      animation_url
+      content
+      external_url
+      image
+      media {
+        ...EncryptedMediaSetFields
+      }
     }
   }
 }
@@ -502,40 +503,40 @@ fragment SimpleConditionFields on AccessConditionOutput {
 
 fragment BooleanConditionFieldsRecursive on AccessConditionOutput {
   and {
-     criteria {
-         ...SimpleConditionFields
-         and {
-             criteria {
-                 ...SimpleConditionFields
-             }
-         }
-         or {
-             criteria {
-                 ...SimpleConditionFields
-             }
-         }
-     }
+    criteria {
+      ...SimpleConditionFields
+      and {
+        criteria {
+          ...SimpleConditionFields
+        }
+      }
+      or {
+        criteria {
+          ...SimpleConditionFields
+        }
+      }
+    }
   }
   or {
-     criteria {
-         ...SimpleConditionFields
-         and {
-             criteria {
-                 ...SimpleConditionFields
-             }
-         }
-         or {
-             criteria {
-                 ...SimpleConditionFields
-             }
-         }
-     }
+    criteria {
+      ...SimpleConditionFields
+      and {
+        criteria {
+          ...SimpleConditionFields
+        }
+      }
+      or {
+        criteria {
+          ...SimpleConditionFields
+        }
+      }
+    }
   }
 }
 
 fragment AccessConditionFields on AccessConditionOutput {
-    ...SimpleConditionFields
-    ...BooleanConditionFieldsRecursive
+  ...SimpleConditionFields
+  ...BooleanConditionFieldsRecursive
 }
 
 fragment EncryptedMediaFields on EncryptedMedia {
@@ -546,13 +547,13 @@ fragment EncryptedMediaFields on EncryptedMedia {
 }
 
 fragment EncryptedMediaSetFields on EncryptedMediaSet {
-   original {
-       ...EncryptedMediaFields
-   }
-   small {
-       ...EncryptedMediaFields
-   }
-   medium {
-       ...EncryptedMediaFields
-   }
+  original {
+    ...EncryptedMediaFields
+  }
+  small {
+    ...EncryptedMediaFields
+  }
+  medium {
+    ...EncryptedMediaFields
+  }
 }

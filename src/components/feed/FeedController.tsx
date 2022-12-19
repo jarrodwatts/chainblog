@@ -9,6 +9,8 @@ import useLensUser from "../../lib/auth/useLensUser";
 export default function FeedController() {
   const { personalFeedQuery, defaultFeedQuery } = useDynamicFeed();
 
+  console.log(personalFeedQuery.data);
+
   const { isSignedIn, hasProfile } = useLensUser();
 
   // Loading user's personalised feed

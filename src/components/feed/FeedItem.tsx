@@ -68,6 +68,7 @@ export default function FeedItemComponent({ post }: Props) {
         <Grid xs={12} sm={5} md={4} lg={3} item>
           <MediaRenderer
             src={
+              post?.metadata?.image ||
               post?.metadata?.media?.[0]?.original?.url ||
               // @ts-ignore: Type does exist.
               post?.profile?.coverPicture?.original?.url ||
