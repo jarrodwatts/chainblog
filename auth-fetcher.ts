@@ -33,7 +33,10 @@ export const fetchData = <TData, TVariables>(
   options?: RequestInit["headers"]
 ): (() => Promise<TData>) => {
   return async () => {
-    const accessToken = await getAccessToken();
+    // If on server, then don't try to get an access token
+
+    const accessToken =
+      typeof window === "undefined" ? null : await getAccessToken();
 
     const res = await fetch(endpoint, {
       method: "POST",
@@ -59,7 +62,7 @@ export const fetchData = <TData, TVariables>(
 
     if (json.errors) {
       const { message } = json.errors[0] || "Error..";
-      throw new Error(message);
+      // throw new Error(message);
     }
 
     return json.data;

@@ -9,7 +9,7 @@ import omitDeep from "omit-deep";
  * and limits the length to 100 characters.
  */
 export function getPreviewText(markdown: string) {
-  if (markdown.length > 300) {
+  if (markdown?.length > 300) {
     return (
       markdown
         .replace(/[\*_\[\]\(\)]/g, "") // Remove markdown formatting
