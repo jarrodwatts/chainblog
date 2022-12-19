@@ -45,6 +45,9 @@ export const fetchData = <TData, TVariables>(
               "x-access-token": `Bearer ${accessToken}`,
             }
           : {}),
+
+        // Cors
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
         query,
