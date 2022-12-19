@@ -45,6 +45,7 @@
     "@graphql-codegen/typescript-operations": "^2.5.10",
     "@graphql-codegen/typescript-react-query": "^4.0.6",
     "@types/react-syntax-highlighter": "^15.5.5",
-    "autoprefixer": "^10.4.13"
+    "autoprefixer": "^10.4.13",
+    "typescript": "^4.9.4"
   }
 }

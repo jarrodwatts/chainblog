@@ -19,8 +19,6 @@ export default function createEmptyMarkdownSyntax(decoration: Decoration) {
       return "**";
     case "italic":
       return "*";
-    case "underline":
-      return "__";
     case "quote":
       return "\n" + "> ";
     case "inline code":
