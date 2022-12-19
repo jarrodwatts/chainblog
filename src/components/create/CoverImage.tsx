@@ -3,13 +3,15 @@ import React, { useEffect, useState, useRef } from "react";
 import styles from "./create.module.css";
 import CloseIcon from "@mui/icons-material/Close";
 
-type Props = {};
+type Props = {
+  coverImage: File | null;
+  setCoverImage: (coverImage: File | null) => void;
+};
 
 /**
  * Allow users to upload a cover image for their post
  */
-export default function CoverImage({}: Props) {
-  const [coverImage, setCoverImage] = useState<File | null>(null);
+export default function CoverImage({ coverImage, setCoverImage }: Props) {
   const [coverImageUrl, setCoverImageUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 

@@ -111,3 +111,101 @@
   right: 12px;
   min-width: 24px;
 }
+
+.settingsButton {
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.settingsSidebar {
+  width: 480px;
+  padding-left: 24px;
+  padding-top: 32px;
+  padding-right: 16px;
+}
+
+.titleInput {
+  font-size: 2.125rem;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+.draftWarningContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background: rgba(234, 234, 234, 0.3);
+}
+
+.label {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.tinyLabel {
+  margin-top: -8px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.textFieldContainer {
+  margin-bottom: 32px;
+}
+
+.sidebarImagePreview {
+  max-height: 128px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.tagChipContainer {
+  margin-top: 12px;
+}
+
+.tagChip {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  border-image: linear-gradient(
+    to bottom right,
+    #9e61ff 0%,
+    #619bff 25%,
+    #e73c7e 75%,
+    #23a6d5 100%
+  );
+  border-image-slice: 1;
+}
+
+.publishButton {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #0d0a1e;
+  border: 1px solid #0d0a1e;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  text-decoration: none;
+  height: 48px;
+  background: linear-gradient(90deg, #9e61ff 0%, #619bff 100%) right !important;
+  background-size: 200% 100%;
+  color: #fff;
+  transition: all 0.5s ease;
+}
+
+.publishButton:hover {
+  background-position: left;
+  transition: all 0.5s ease;
+}

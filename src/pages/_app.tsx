@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import * as React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,6 +12,10 @@ import Header from "../components/landing/header/Header";
 import LensUserContextProvider from "../context/LensUserContext";
 import { useRouter } from "next/router";
 import NextNProgress from "nextjs-progressbar";
+import GlobalInformationModalContextProvider, {
+  ModalState,
+} from "../context/GlobalInformationModalContext";
+import ModalOverlay from "../components/modal/ModalOverlay";
 
 // thirwdeb setup
 const desiredChainId = ChainId.Polygon;
@@ -29,6 +33,7 @@ interface MyAppProps extends AppProps {
 export default function App(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const router = useRouter();
+  const [modalState, setModalState] = useState<ModalState | null>(null);
 
   return (
     <CacheProvider value={emotionCache}>
@@ -44,10 +49,19 @@ export default function App(props: MyAppProps) {
             <ThemeProvider theme={theme}>
               {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
               <CssBaseline />
-              <NextNProgress color={theme.palette.primary.main} />
-              <Header />
-              {router.pathname !== "/" && <div style={{ height: 96 }} />}
-              <Component {...pageProps} />
+
+              <GlobalInformationModalContextProvider
+                modalState={modalState}
+                setModalState={setModalState}
+              >
+                <NextNProgress color={theme.palette.primary.main} />
+                {/* TODO: Temp hack to not show header on /create page */}
+                {router.pathname !== "/create" && <Header />}
+                {router.pathname !== "/" && <div style={{ height: 96 }} />}
+                {/* If modalState, show ModalOverlay */}
+                {modalState?.type !== null && <ModalOverlay />}
+                <Component {...pageProps} />
+              </GlobalInformationModalContextProvider>
             </ThemeProvider>
           </LensUserContextProvider>
         </QueryClientProvider>

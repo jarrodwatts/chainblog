@@ -1,4 +1,4 @@
-import { Button, ButtonBase, Grid, Tooltip } from "@mui/material";
+import { Button, ButtonBase, Grid, Tooltip, Typography } from "@mui/material";
 import React from "react";
 import styles from "./create.module.css";
 import HelpIcon from "@mui/icons-material/Help";
@@ -132,50 +132,58 @@ export default function EditorToolbar({
   setActiveTab,
 }: Props) {
   return (
-    <Grid
-      container
-      direction="row"
-      alignItems="center"
-      justifyContent="space-between"
-      className={styles.navbarContainer}
-    >
-      {/* Left side of editor (Tabs) */}
-      <Grid item className={styles.navbarTabs}>
-        {/* Map over editor tabs */}
-        {tabs.map((tab, i) => (
-          <Grid item key={i}>
-            <Button
-              color={activeTab === tab.name ? "primary" : "inherit"}
-              onClick={() => setActiveTab(tab.name as EditorTab)}
-              className={`${styles.navbarTab} ${
-                activeTab === tab.name ? styles.navbarTabActive : ""
-              }`}
-              startIcon={tab.icon}
-            >
-              {capitalize(tab.name)}
-            </Button>
-          </Grid>
-        ))}
-      </Grid>
-
-      {/* Right side of editor (Editor options) */}
-      <Grid item className={styles.navbarOptions}>
-        {editorOptions.map((option, i) => (
-          <Grid item key={i}>
-            <Tooltip title={capitalize(option.name)}>
-              <ButtonBase
-                className={styles.navbarOptionButton}
-                onClick={() => {
-                  if (!mdInputRef?.current) return;
-                  option.onClick?.(mdInputRef?.current, setMdValue);
-                }}
+    <>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+        className={styles.navbarContainer}
+      >
+        {/* Left side of editor (Tabs) */}
+        <Grid item className={styles.navbarTabs}>
+          {/* Map over editor tabs */}
+          {tabs.map((tab, i) => (
+            <Grid item key={i}>
+              <Button
+                color={activeTab === tab.name ? "primary" : "inherit"}
+                onClick={() => setActiveTab(tab.name as EditorTab)}
+                className={`${styles.navbarTab} ${
+                  activeTab === tab.name ? styles.navbarTabActive : ""
+                }`}
+                startIcon={tab.icon}
               >
-                {option.icon}
-              </ButtonBase>
-            </Tooltip>
-          </Grid>
-        ))}
+                {capitalize(tab.name)}
+              </Button>
+            </Grid>
+          ))}
+        </Grid>
+
+        {/* Right side of editor (Editor options) */}
+        <Grid item className={styles.navbarOptions}>
+          {editorOptions.map((option, i) => (
+            <Grid item key={i}>
+              <Tooltip title={capitalize(option.name)}>
+                <ButtonBase
+                  className={styles.navbarOptionButton}
+                  onClick={() => {
+                    if (!mdInputRef?.current) return;
+                    option.onClick?.(mdInputRef?.current, setMdValue);
+                  }}
+                >
+                  {option.icon}
+                </ButtonBase>
+              </Tooltip>
+            </Grid>
+          ))}
+        </Grid>
       </Grid>
-    </Grid>
+      <div className={styles.draftWarningContainer}>
+        <Typography variant="body2" color="error">
+          Currently, there is no draft-saving feature.{" "}
+          <b>Your work will be lost if you leave this page</b>.
+        </Typography>
+      </div>
+    </>
   );
 }

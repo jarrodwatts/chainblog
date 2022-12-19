@@ -4,6 +4,9 @@ import { useEffect } from "react";
 import { STORAGE_KEY } from "../../../auth-fetcher";
 import { useDefaultProfileQuery } from "../../graphql/generated";
 
+/**
+ * DON'T USE THIS DIRECTLY! Use useLensUserContext.
+ */
 export default function useLensUser() {
   const localStorageQuery = useQuery(["lensUser"], () => {
     const user = localStorage.getItem(STORAGE_KEY);

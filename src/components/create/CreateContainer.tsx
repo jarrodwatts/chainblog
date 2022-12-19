@@ -1,10 +1,12 @@
-import { Container } from "@mui/material";
+import { Container, TextField } from "@mui/material";
 import React, { useRef, useState } from "react";
 import guideText from "../../../const/guideText";
 import MarkdownPreview from "../post/MarkdownPreview";
 import CoverImage from "./CoverImage";
+import CreateHeader from "./CreateHeader";
 import EditorToolbar from "./EditorToolbar";
 import MarkdownEditor from "./MarkdownEditor";
+import styles from "./create.module.css";
 
 type Props = {};
 
@@ -21,33 +23,67 @@ export default function CreateContainer({}: Props) {
   const [mdInput, setMdInput] = useState<string>("");
 
   // State to keep track of the cover image
-  // todo
+  const [coverImage, setCoverImage] = useState<File | null>(null);
+
+  // State to keep track of the title
+  const [title, setTitle] = useState<string>("");
+
+  // Configurable metadata state
+  const [metadata, setMetadata] = useState<Record<string, any>>({});
 
   return (
-    <Container maxWidth="md">
-      <CoverImage />
-
-      <EditorToolbar
-        mdInputRef={mdInputRef}
-        setMdValue={setMdInput}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
+    <>
+      <CreateHeader
+        postMetadata={{
+          ...metadata,
+          title,
+          coverImage,
+          content: mdInput,
+        }}
+        setPostMetadata={setMetadata}
       />
+      <Container maxWidth="md">
+        <CoverImage coverImage={coverImage} setCoverImage={setCoverImage} />
 
-      {/* Preview Tab */}
-      {activeTab === "preview" && <MarkdownPreview content={mdInput} />}
-
-      {/* Guide tab */}
-      {activeTab === "guide" && <MarkdownPreview content={guideText} />}
-
-      {/* Write tab */}
-      {activeTab === "write" && (
-        <MarkdownEditor
+        <EditorToolbar
           mdInputRef={mdInputRef}
-          mdValue={mdInput}
           setMdValue={setMdInput}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
         />
-      )}
-    </Container>
+
+        {/* Preview Tab */}
+        {activeTab === "preview" && <MarkdownPreview content={mdInput} />}
+
+        {/* Guide tab */}
+        {activeTab === "guide" && <MarkdownPreview content={guideText} />}
+
+        {/* Write tab */}
+        {activeTab === "write" && (
+          <>
+            <TextField
+              label="Title"
+              fullWidth
+              placeholder="Enter a title..."
+              size="medium"
+              variant="standard"
+              InputProps={{
+                className: styles.titleInput,
+              }}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              multiline
+              maxRows={3}
+              required
+            />
+            <MarkdownEditor
+              mdInputRef={mdInputRef}
+              mdValue={mdInput}
+              setMdValue={setMdInput}
+            />
+          </>
+        )}
+      </Container>
+    </>
   );
 }
