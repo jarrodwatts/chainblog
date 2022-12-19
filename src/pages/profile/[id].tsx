@@ -33,6 +33,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   })();
 
+  if (!profileQueryResult.profile) {
+    return {
+      notFound: true,
+    };
+  }
+
   const publicationsQueryResult = await fetchData<
     PublicationsQuery,
     PublicationsQueryVariables

@@ -1,9 +1,11 @@
-import Image from "next/image";
+import { Typography } from "@mui/material";
+import { MediaRenderer } from "@thirdweb-dev/react";
 import React, { ReactElement } from "react";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import theme from "../../lib/mui/theme";
+import styles from "./post.module.css";
 
 interface Props {
   content: string;
@@ -15,34 +17,23 @@ export default function MarkdownPreview({ content }: Props): ReactElement {
       <ReactMarkdown
         components={{
           h1: (props: any) => (
-            <h1
-              {...props}
-              style={{
-                ...theme.typography.h1,
-                lineHeight: 1.75,
-              }}
-            />
+            <Typography variant="h1" {...props} className={styles.blogH1} />
           ),
           h2: (props: any) => (
-            <h2
-              {...props}
-              style={{ ...theme.typography.h2, lineHeight: 1.75 }}
-            />
+            <Typography variant="h2" {...props} className={styles.blogH2} />
           ),
           h3: (props: any) => (
-            <h3
-              {...props}
-              style={{
-                ...theme.typography.h3,
-                lineHeight: 1.75,
-                marginBottom: "1em",
-                marginTop: "1.5em",
-              }}
-            />
+            <Typography variant="h3" {...props} className={styles.blogH3} />
           ),
-          h4: (props: any) => <h4 {...props} style={theme.typography.h4} />,
-          h5: (props: any) => <h5 {...props} style={theme.typography.h5} />,
-          h6: (props: any) => <h6 {...props} style={theme.typography.h6} />,
+          h4: (props: any) => (
+            <Typography variant="h4" {...props} className={styles.blogH4} />
+          ),
+          h5: (props: any) => (
+            <Typography variant="h5" {...props} className={styles.blogH5} />
+          ),
+          h6: (props: any) => (
+            <Typography variant="h6" {...props} className={styles.blogH6} />
+          ),
 
           p: (props: any) => {
             const { node } = props;
@@ -51,32 +42,9 @@ export default function MarkdownPreview({ content }: Props): ReactElement {
               try {
                 const image = node.children[0];
 
-                // Alt Text of the image
-                const alt = image.properties.alt
-                  .match(/alt:.*?}/g)[0]
-                  .replace("alt:", "")
-                  .replace("}", "");
+                const { alt, src } = image.properties!;
 
-                // Width of the image
-                const width = image.properties.alt
-                  .match(/width:.*?}/g)[0]
-                  .replace("width:", "")
-                  .replace("}", "");
-
-                // Height of the image
-                const height = image.properties.alt
-                  .match(/height:.*?}/g)[0]
-                  .replace("height:", "")
-                  .replace("}", "");
-
-                return (
-                  <Image
-                    src={image.properties.src}
-                    width={width}
-                    height={height}
-                    alt={alt}
-                  />
-                );
+                return <MediaRenderer src={src} alt={alt} width="100%" />;
               } catch (error) {
                 console.error("Error:", error);
                 return <></>;

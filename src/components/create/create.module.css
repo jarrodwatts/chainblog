@@ -1,0 +1,113 @@
+.navbarContainer {
+  border: 1px solid rgba(234, 234, 234, 0.3);
+  background-color: #141414;
+  border-radius: 16px;
+  min-height: 64px;
+  height: auto;
+  margin-bottom: 32px;
+  margin-top: 32px;
+  /* Stick to top when scrolled */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin-left: -16px;
+  width: calc(100% + 32px);
+}
+
+.navbarTabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navbarTab {
+  margin-left: 16px;
+  border-radius: 8px;
+}
+
+.navbarOptions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navbarOptionButton {
+  height: 32px;
+  width: 32px;
+  padding: 4px;
+  margin-right: 8px;
+  border-radius: 8px;
+}
+
+.editor {
+  margin-bottom: 5rem;
+}
+
+/* On mobile devices */
+@media only screen and (max-width: 720px) {
+  .navbarContainer {
+    padding-top: 8px;
+    width: 100%;
+    margin-left: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .navbarOptions {
+    border-top: 1px solid rgba(234, 234, 234, 0.3);
+
+    /* spacing beneath border */
+    padding-top: 10px;
+    padding-bottom: 8px;
+
+    display: flex;
+    margin-top: 8px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Hide the last button inside ,navbarOptions */
+  .navbarOptions > *:last-child {
+    display: none;
+  }
+}
+
+.dragAndDropZone {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgba(234, 234, 234, 0.3);
+  border-radius: 8px;
+  height: 256px;
+  width: 100%;
+  margin-bottom: 32px;
+  margin-top: 32px;
+}
+
+.coverImagePreviewContainer {
+  position: relative;
+}
+.coverImagePreview {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-top: 32px;
+  max-height: 256px;
+  object-fit: cover;
+}
+
+.coverImagePreviewContainer .removeCoverButton {
+  position: absolute;
+  top: 48px;
+  right: 12px;
+  min-width: 24px;
+}

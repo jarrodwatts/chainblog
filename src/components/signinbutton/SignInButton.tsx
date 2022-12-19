@@ -12,6 +12,7 @@ import useLogin from "../../lib/auth/useLogin";
 import styles from "./signinbutton.module.css";
 import { MediaRenderer } from "@thirdweb-dev/react";
 import { useLensUserContext } from "../../context/LensUserContext";
+import Link from "next/link";
 
 export default function SignInButton() {
   const address = useAddress();
@@ -72,17 +73,18 @@ export default function SignInButton() {
 
   return (
     <div className={styles.profileContainer}>
-      <div className={styles.profilePicture}>
+      {/* TODO: Should create profile page and link to it. */}
+      <Link
+        href={`/profile/${lensUser?.defaultProfile?.handle}`}
+        className={styles.profilePicture}
+      >
         <MediaRenderer
           // @ts-ignore: Type does exist.
           src={lensUser?.defaultProfile?.picture?.original?.url || ""}
           alt={lensUser?.defaultProfile?.name || "Loading..."}
           className={styles.profilePicture}
         />
-      </div>
-      <Typography variant="body2">
-        @{lensUser?.defaultProfile?.handle || "No Name"}
-      </Typography>
+      </Link>
     </div>
   );
 }

@@ -46,3 +46,32 @@
   color: inherit;
   cursor: pointer;
 }
+
+.blogH1 {
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+}
+
+.blogH2 {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+.blogH3 {
+  margin-top: 1.25em;
+}
+
+.blogH4 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.blogH5 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.blogH6 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

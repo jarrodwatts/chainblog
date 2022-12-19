@@ -29,8 +29,6 @@ export default function DiscoverContainer() {
     }
   );
 
-  console.log({ profiles, isLoading, isFetchingNextPage, hasNextPage, error });
-
   return (
     <Container maxWidth="lg" className={styles.pageContainer}>
       <Grid container spacing={3} className={styles.authorCardContainer}>

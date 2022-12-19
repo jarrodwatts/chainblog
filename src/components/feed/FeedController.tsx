@@ -11,15 +11,6 @@ export default function FeedController() {
 
   const { isSignedIn, hasProfile } = useLensUser();
 
-  console.log({
-    pf: personalFeedQuery.data,
-    pfl: personalFeedQuery.isLoading,
-    pfe: personalFeedQuery.error,
-    df: defaultFeedQuery.data,
-    dfl: defaultFeedQuery.isLoading,
-    dfe: defaultFeedQuery.error,
-  });
-
   // Loading user's personalised feed
   if (isSignedIn && hasProfile && personalFeedQuery?.isLoading) {
     return (
@@ -37,8 +28,6 @@ export default function FeedController() {
 
   // Loaded the user's personalised feed
   if (personalFeedQuery?.data) {
-    console.log(personalFeedQuery.data);
-
     return (
       <Container maxWidth="md" className={styles.feedContainer}>
         <Grid
