@@ -109,6 +109,7 @@ export default function MarkdownPreview({ content }: Props): ReactElement {
             const match = /language-(\w+)/.exec(className || "") ?? "text";
             return !inline && match ? (
               <SyntaxHighlighter
+                // @ts-ignore TODO
                 style={dracula}
                 language={match[1]}
                 PreTag="div"
