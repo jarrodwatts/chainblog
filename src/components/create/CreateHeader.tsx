@@ -6,7 +6,7 @@ import SignInButton from "../signinbutton/SignInButton";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useLensUserContext } from "../../context/LensUserContext";
 import SettingsSidebar from "./SettingsSidebar";
-import ButtonBase from "@mui/material/ButtonBase";
+import { ButtonBase } from "@mui/material";
 
 type Props = {
   postMetadata: Record<string, any>;

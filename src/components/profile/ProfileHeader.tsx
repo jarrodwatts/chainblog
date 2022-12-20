@@ -1,10 +1,8 @@
-import { Typography } from "@mui/material";
-import { Container } from "@mui/system";
+import { Typography, Chip, Container } from "@mui/material";
 import { MediaRenderer, Web3Button } from "@thirdweb-dev/react";
 import React from "react";
 import { ProfileQuery } from "../../graphql/generated";
 import styles from "./profile.module.css";
-import Chip from "@mui/material/Chip";
 import {
   defaultCoverPhoto,
   defaultProfilePicture,

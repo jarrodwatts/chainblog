@@ -1,8 +1,6 @@
 import * as React from "react";
-import Drawer from "@mui/material/Drawer";
 import createStyles from "./create.module.css";
-import { Divider, Grid, TextField } from "@mui/material";
-import Typography from "@mui/material/Typography";
+import { Divider, Drawer, Grid, TextField, Typography } from "@mui/material";
 import styles from "./create.module.css";
 import TagSelector from "./TagSelector";
 import { Web3Button } from "@thirdweb-dev/react";

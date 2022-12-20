@@ -1,5 +1,4 @@
-import { Typography } from "@mui/material";
-import Button from "@mui/material/Button";
+import { Button, Typography } from "@mui/material";
 import {
   useNetworkMismatch,
   useAddress,

@@ -2,9 +2,9 @@ import Link from "next/link";
 import React from "react";
 import SignInButton from "../../signinbutton/SignInButton";
 import styles from "./header.module.css";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import theme from "../../../lib/mui/theme";
 import BurgerMenu from "./BurgerMenu";
+import { useMediaQuery } from "@mui/material";
 
 const navItems = [
   <Link className={`${styles.ctaLink}`} href="/create" key={0}>

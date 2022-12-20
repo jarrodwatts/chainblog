@@ -1,10 +1,8 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import styles from "./header.module.css";
+import { Button, Menu, MenuItem } from "@mui/material";
 
 export default function BurgerMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

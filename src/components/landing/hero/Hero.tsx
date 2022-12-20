@@ -1,6 +1,4 @@
-import { Button } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import { Container } from "@mui/system";
+import { Button, Typography, Container } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";

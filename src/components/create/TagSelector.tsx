@@ -1,8 +1,6 @@
-import { Grid, TextField } from "@mui/material";
-import Typography from "@mui/material/Typography/Typography";
+import { Grid, TextField, Chip, Typography } from "@mui/material";
 import React, { useState } from "react";
 import styles from "./create.module.css";
-import Chip from "@mui/material/Chip";
 
 type Props = {
   postMetadata: Record<string, any>;

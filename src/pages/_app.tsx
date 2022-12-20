@@ -1,8 +1,6 @@
 import type { AppProps } from "next/app";
 import React, { useState } from "react";
 import Head from "next/head";
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThirdwebProvider, ChainId } from "@thirdweb-dev/react";
@@ -16,6 +14,7 @@ import GlobalInformationModalContextProvider, {
   ModalState,
 } from "../context/GlobalInformationModalContext";
 import ModalOverlay from "../components/modal/ModalOverlay";
+import { ThemeProvider, CssBaseline } from "@mui/material";
 
 // thirwdeb setup
 const desiredChainId = ChainId.Polygon;
