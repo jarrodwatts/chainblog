@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Chainblog
 
-## Getting Started
+![banner.png](./banner.png)
 
-First, run the development server:
+A decentralized blogging platform built on top of the [Lens Protocol](https://www.lens.xyz/).
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- Own your [Profile](https://docs.lens.xyz/docs/profile) as an NFT.
+- Write posts in [markdown](https://www.markdownguide.org/), store them on [IPFS](https://portal.thirdweb.com/storage) and attach them to your profile NFT inside a [mapping](https://docs.soliditylang.org/en/v0.8.17/types.html#mapping-types).
+- View Personalised [Feed](https://docs.lens.xyz/docs/timeline) of posts from creators you follow.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- [Next.js](https://nextjs.org/): 🐐 React framework for production.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- [TypeScript](https://www.typescriptlang.org/): 🦕 A better JavaScript.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- [Lens Protocol](https://www.lens.xyz/): 📡 Decentralized social graph for storing data for profiles, posts, comments, mirrors, etc.
 
-## Learn More
+- [GraphQL & GraphQL Codegen](https://the-guild.dev/graphql/codegen): 📜 Auto-generate strongly typed types and hooks for your GraphQL queries based on the Lens GraphQL schema. See [codegen.yaml](./codegen.yaml) for more details.
 
-To learn more about Next.js, take a look at the following resources:
+- [thirdweb](https://portal.thirdweb.com/sdk): 📦 All things web3.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  - [React SDK](https://portal.thirdweb.com/sdk) to connect to and interact with smart contracts in React hooks.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  - [Storage](https://portal.thirdweb.com/storage) to store files on IPFS.
 
-## Deploy on Vercel
+  - [UI Components](https://portal.thirdweb.com/ui-components) to connect wallets, render content from IPFS, and interact with smart contracts:
+    - [Connect Wallet Button](https://portal.thirdweb.com/ui-components/connectwalletbutton)
+    - [Web3 Button](https://portal.thirdweb.com/ui-components/web3button)
+    - [IPFS Media Renderer](https://portal.thirdweb.com/ui-components/ipfs-media-renderer)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Material UI](https://mui.com/): 🎨 Because I suck at tailwind.
