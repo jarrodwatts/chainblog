@@ -6,7 +6,7 @@ A decentralized blogging platform built on top of the [Lens Protocol](https://ww
 
 - Own your [Profile](https://docs.lens.xyz/docs/profile) as an NFT.
 - Write posts in [markdown](https://www.markdownguide.org/), store them on [IPFS](https://portal.thirdweb.com/storage) and attach them to your profile NFT inside a [mapping](https://docs.soliditylang.org/en/v0.8.17/types.html#mapping-types).
-- View Personalised [Feed](https://docs.lens.xyz/docs/timeline) of posts from creators you follow.
+- View a Personalised [Feed](https://docs.lens.xyz/docs/timeline) of posts from creators you follow.
 
 ## Tech Stack
 
@@ -29,4 +29,34 @@ A decentralized blogging platform built on top of the [Lens Protocol](https://ww
     - [Web3 Button](https://portal.thirdweb.com/ui-components/web3button)
     - [IPFS Media Renderer](https://portal.thirdweb.com/ui-components/ipfs-media-renderer)
 
-- [Material UI](https://mui.com/): 🎨 Because I suck at tailwind.
+- [Material UI](https://mui.com/): 🎨 Because I [suck at tailwind](https://twitter.com/jarrodWattsDev/status/1602741700472049667).
+
+- [Tanstack (React) Query](https://tanstack.com/query/v4): 🐶 A powerful, flexible, and extensible data fetching and caching library for React.
+  - [@graphql-codegen/typescript-react-query](https://the-guild.dev/graphql/codegen/plugins/typescript/typescript-react-query) Auto-generate strongly typed React Query hooks for queries and mutations based on your `.graphql` files. [Demo](https://twitter.com/jarrodWattsDev/status/1602534171284426754).
+
+## Roadmap
+
+- ✅ Sign in with Lens
+- ✅ Create a post
+- ✅ View a feed of posts
+  - ✅ View a feed of posts from creators you follow
+- ✅ View a profile
+  - ✅ View a profile's posts
+- ✅ View an individual post
+- ✅ Discover profiles
+- 🚧 Follow a profile
+- 🚧 Choose which collection module to use on a post
+- 🚧 Collect a post
+- 🚧 View a post's collection info (price, supply, etc.)
+- 🚧 Add a reaction
+- 🚧 View post reactions
+- 🚧 Comment on a post
+- 🚧 View post comments
+- 🚧 Mirror a post
+- 🚧 View a post's mirrors
+
+### Future
+
+- 🤔 Use dispatcher for all transactions to have gasless transactions
+- 🤔 Create Lens Profiles directly from Chainblog
+- 🤔E2EE Messaging using [XMTP](https://xmtp.org/)
