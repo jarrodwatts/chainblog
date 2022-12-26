@@ -19,7 +19,7 @@ export default function PostView({ publication }: Props) {
     <div
       style={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: matches ? "column" : "row",
       }}
     >
       <Container maxWidth="md" className={styles.postView}>
@@ -32,6 +32,8 @@ export default function PostView({ publication }: Props) {
             content={publication?.publication?.metadata?.content ?? ""}
           />
         </div>
+
+        {matches && <PostSidebar publication={publication} />}
       </Container>
 
       {!matches && <PostSidebar publication={publication} />}
