@@ -12,7 +12,6 @@ export default function DiscoverContainer() {
     isLoading,
     isFetchingNextPage,
     hasNextPage,
-    error,
     fetchNextPage,
   } = useInfiniteExploreProfiles(
     {
@@ -48,7 +47,7 @@ export default function DiscoverContainer() {
       </Grid>
 
       <div className={styles.loadMore}>
-        {isFetchingNextPage ? (
+        {profiles?.pages.length !== 0 && isFetchingNextPage ? (
           <Typography variant="body2">Loading more...</Typography>
         ) : hasNextPage ? (
           <Button onClick={() => fetchNextPage()}>Load more</Button>

@@ -14,7 +14,11 @@ import GlobalInformationModalContextProvider, {
   ModalState,
 } from "../context/GlobalInformationModalContext";
 import ModalOverlay from "../components/modal/ModalOverlay";
-import { ThemeProvider, CssBaseline } from "@mui/material";
+import { ThemeProvider, CssBaseline, Snackbar } from "@mui/material";
+import SnackbarContextProvider, {
+  SnackbarState,
+} from "../context/SnackbarContext";
+import SnackbarComponent from "../components/snackbar/Snackbar";
 
 // thirwdeb setup
 const desiredChainId = ChainId.Polygon;
@@ -33,6 +37,9 @@ export default function App(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const router = useRouter();
   const [modalState, setModalState] = useState<ModalState | null>(null);
+  const [snackbarState, setSnackbarState] = useState<SnackbarState | null>(
+    null
+  );
 
   return (
     <CacheProvider value={emotionCache}>
@@ -53,13 +60,19 @@ export default function App(props: MyAppProps) {
                 modalState={modalState}
                 setModalState={setModalState}
               >
-                <NextNProgress color={theme.palette.primary.main} />
-                {/* TODO: Temp hack to not show header on /create page */}
-                {router.pathname !== "/create" && <Header />}
-                {router.pathname !== "/" && <div style={{ height: 96 }} />}
-                {/* If modalState, show ModalOverlay */}
-                {modalState?.type !== null && <ModalOverlay />}
-                <Component {...pageProps} />
+                <SnackbarContextProvider
+                  snackbarState={snackbarState}
+                  setSnackbarState={setSnackbarState}
+                >
+                  <NextNProgress color={theme.palette.primary.main} />
+                  {/* TODO: Temp hack to not show header on /create page */}
+                  {router.pathname !== "/create" && <Header />}
+                  {router.pathname !== "/" && <div style={{ height: 96 }} />}
+                  {/* If modalState, show ModalOverlay */}
+                  {modalState?.type !== null && <ModalOverlay />}
+                  {snackbarState?.open && <SnackbarComponent />}
+                  <Component {...pageProps} />
+                </SnackbarContextProvider>
               </GlobalInformationModalContextProvider>
             </ThemeProvider>
           </LensUserContextProvider>

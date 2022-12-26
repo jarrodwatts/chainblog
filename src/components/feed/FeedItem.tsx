@@ -7,7 +7,7 @@ import ChatBubbleIcon from "@mui/icons-material/ChatBubble"; // Comment
 import RepeatIcon from "@mui/icons-material/Repeat"; // Mirror
 import { ProfileFeedQuery } from "../../graphql/generated";
 import { getRelativeTime } from "../../lib/helper/dates";
-import { getPreviewText } from "../../lib/helper/format";
+import { formatNum, getPreviewText } from "../../lib/helper/format";
 import Link from "next/link";
 import { defaultProfilePicture } from "../../../const/images";
 
@@ -85,19 +85,19 @@ export default function FeedItemComponent({ post }: Props) {
         <div className={styles.metricContainer}>
           <ChatBubbleIcon className={styles.metricIcon} />
           <Typography variant="body2" className={styles.metricText}>
-            {post?.stats?.totalAmountOfComments}
+            {formatNum(post?.stats?.totalAmountOfComments)}
           </Typography>
         </div>
         <div className={styles.metricContainer}>
           <RepeatIcon className={styles.metricIcon} />
           <Typography variant="body2" className={styles.metricText}>
-            {post?.stats?.totalAmountOfMirrors}
+            {formatNum(post?.stats?.totalAmountOfMirrors)}
           </Typography>
         </div>
         <div className={styles.metricContainer}>
           <ShoppingBagIcon className={styles.metricIcon} />
           <Typography variant="body2" className={styles.metricText}>
-            {post?.stats?.totalAmountOfCollects}
+            {formatNum(post?.stats?.totalAmountOfCollects)}
           </Typography>
         </div>
       </div>

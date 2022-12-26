@@ -1,5 +1,5 @@
-mutation FollowUser($request: FollowRequest!) {
-  createFollowTypedData(request: $request) {
+mutation createUnfollowTypedData($request: UnfollowRequest!) {
+  createUnfollowTypedData(request: $request) {
     id
     expiresAt
     typedData {
@@ -10,7 +10,7 @@ mutation FollowUser($request: FollowRequest!) {
         verifyingContract
       }
       types {
-        FollowWithSig {
+        BurnWithSig {
           name
           type
         }
@@ -18,8 +18,7 @@ mutation FollowUser($request: FollowRequest!) {
       value {
         nonce
         deadline
-        profileIds
-        datas
+        tokenId
       }
     }
   }

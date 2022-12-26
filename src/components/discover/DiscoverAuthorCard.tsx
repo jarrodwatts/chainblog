@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { MediaRenderer, Web3Button } from "@thirdweb-dev/react";
+import { MediaRenderer, useAddress, Web3Button } from "@thirdweb-dev/react";
 import Link from "next/link";
 import React from "react";
 import { LENS_ABI } from "../../../const/abis";
@@ -9,6 +9,7 @@ import {
   defaultProfilePicture,
 } from "../../../const/images";
 import { ExploreProfilesQuery } from "../../graphql/generated";
+import FollowButton from "../followbutton/FollowButton";
 import styles from "./discover.module.css";
 
 type Props = {
@@ -16,6 +17,8 @@ type Props = {
 };
 
 export default function DiscoverAuthorCard({ author }: Props) {
+  const address = useAddress();
+
   return (
     <div className={styles.authorCard}>
       {/* Cover photo */}
@@ -68,16 +71,7 @@ export default function DiscoverAuthorCard({ author }: Props) {
         @{author.handle}
       </Typography>
 
-      <Web3Button
-        contractAddress={LENS_CONTRACT_ADDRESS}
-        contractAbi={LENS_ABI}
-        action={() => {
-          // TODO: Add follow logic
-        }}
-        className={styles.followButton}
-      >
-        {author.isFollowedByMe ? "Unfollow" : "Follow"}
-      </Web3Button>
+      <FollowButton profileId={author.id} />
     </div>
   );
 }

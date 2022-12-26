@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { PublicationsQuery } from "../../graphql/generated";
 import { getFormattedDate } from "../../lib/helper/dates";
-import { getPreviewText } from "../../lib/helper/format";
+import { formatNum, getPreviewText } from "../../lib/helper/format";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag"; // Collect
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble"; // Comment
 import RepeatIcon from "@mui/icons-material/Repeat"; // Mirror
@@ -28,7 +28,7 @@ export default function ProfileFeedItem({ post }: Props) {
           item
           xs={12}
           sm={7}
-          md={4}
+          md={8}
           lg={9}
           className={styles.blogTextContainer}
         >
@@ -46,7 +46,7 @@ export default function ProfileFeedItem({ post }: Props) {
             {getPreviewText(post?.metadata?.content)}
           </Typography>
         </Grid>
-        <Grid xs={12} sm={5} md={8} lg={3} item>
+        <Grid xs={12} sm={5} md={4} lg={3} item>
           <MediaRenderer
             src={
               post?.metadata?.image ||
@@ -66,19 +66,19 @@ export default function ProfileFeedItem({ post }: Props) {
         <div className={styles.metricContainer}>
           <ChatBubbleIcon className={styles.metricIcon} />
           <Typography variant="body2" className={styles.metricText}>
-            {post?.stats?.totalAmountOfComments}
+            {formatNum(post?.stats?.totalAmountOfComments)}
           </Typography>
         </div>
         <div className={styles.metricContainer}>
           <RepeatIcon className={styles.metricIcon} />
           <Typography variant="body2" className={styles.metricText}>
-            {post?.stats?.totalAmountOfMirrors}
+            {formatNum(post?.stats?.totalAmountOfMirrors)}
           </Typography>
         </div>
         <div className={styles.metricContainer}>
           <ShoppingBagIcon className={styles.metricIcon} />
           <Typography variant="body2" className={styles.metricText}>
-            {post?.stats?.totalAmountOfCollects}
+            {formatNum(post?.stats?.totalAmountOfCollects)}
           </Typography>
         </div>
       </div>

@@ -63,6 +63,14 @@
   z-index: 3;
 }
 
+/* On mobile screen */
+@media (max-width: 768px) {
+  .profilePhoto {
+    height: 128px;
+    width: 128px;
+  }
+}
+
 .profileName {
   font-size: 2.5rem;
   margin-top: 12px;
@@ -99,6 +107,14 @@
 .followButton:hover {
   background-position: left;
   transition: all 0.5s ease;
+}
+
+.followersAndFollowing {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  margin-top: 1rem;
 }
 
 @keyframes animatedgradient {

@@ -20,7 +20,7 @@ async function getAccessToken(): Promise<string | null> {
   // If the exp is less than the current time, then the token has expired
   if (isTokenExpired(tokenValue.exp)) {
     // If the token has expired, then we need to refresh the token
-    accessTokenValue = await refreshAccessToken();
+    accessTokenValue = await refreshAccessToken(tokenValue.refreshToken);
   }
 
   // If the token has not expired, then we can use the accessToken
@@ -62,7 +62,7 @@ export const fetchData = <TData, TVariables>(
 
     if (json.errors) {
       const { message } = json.errors[0] || "Error..";
-      // throw new Error(message);
+      throw new Error(message);
     }
 
     return json.data;

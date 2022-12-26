@@ -1,5 +1,5 @@
 import { Typography, Chip, Container } from "@mui/material";
-import { MediaRenderer, Web3Button } from "@thirdweb-dev/react";
+import { MediaRenderer } from "@thirdweb-dev/react";
 import React from "react";
 import { ProfileQuery } from "../../graphql/generated";
 import styles from "./profile.module.css";
@@ -7,16 +7,13 @@ import {
   defaultCoverPhoto,
   defaultProfilePicture,
 } from "../../../const/images";
-import { LENS_CONTRACT_ADDRESS } from "../../../const/blockchain";
-import { LENS_ABI } from "../../../const/abis";
+import FollowButton from "../followbutton/FollowButton";
 
 type Props = {
   profile: ProfileQuery;
 };
 
 export default function ProfileHeader({ profile }: Props) {
-  console.log(profile);
-
   return (
     <Container maxWidth="md">
       <div className={styles.profileHeaderContainer}>
@@ -42,14 +39,7 @@ export default function ProfileHeader({ profile }: Props) {
               className={styles.profilePhoto}
             />
 
-            <Web3Button
-              contractAddress={LENS_CONTRACT_ADDRESS}
-              contractAbi={LENS_ABI}
-              action={() => {}}
-              className={styles.followButton}
-            >
-              {profile.profile?.isFollowedByMe ? "Unfollow" : "Follow"}
-            </Web3Button>
+            <FollowButton profileId={profile.profile?.id} />
           </div>
 
           <Typography variant="h1" className={styles.profileName}>
@@ -72,6 +62,18 @@ export default function ProfileHeader({ profile }: Props) {
           <Typography variant="body1" className={styles.profileBio}>
             {profile.profile?.bio}
           </Typography>
+
+          <div className={styles.followersAndFollowing}>
+            <Typography variant="body1" className={styles.followers}>
+              <b>{profile.profile?.stats.totalFollowers}</b> Followers
+            </Typography>
+            <Typography variant="body1" className={styles.following}>
+              <b>{profile.profile?.stats.totalFollowing}</b> Following
+            </Typography>
+            <Typography variant="body1" className={styles.following}>
+              <b>{profile.profile?.stats.totalPosts}</b> Posts
+            </Typography>
+          </div>
         </div>
       </div>
     </Container>

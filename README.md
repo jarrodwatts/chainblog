@@ -38,25 +38,39 @@ A decentralized blogging platform built on top of the [Lens Protocol](https://ww
 
 - ✅ Sign in with Lens
 - ✅ Create a post
+  - ❌ Wait for transaction to be indexed
 - ✅ View a feed of posts
   - ✅ View a feed of posts from creators you follow
 - ✅ View a profile
   - ✅ View a profile's posts
+  - ❌ `/profile` route
+  - ❌ Edit profile
+  - ❌ Delete profile
+  - ❌ View profile's followers
+  - ❌ View profile's following
 - ✅ View an individual post
 - ✅ Discover profiles
-- 🚧 Follow a profile
-- 🚧 Choose which collection module to use on a post
-- 🚧 Collect a post
-- 🚧 View a post's collection info (price, supply, etc.)
-- 🚧 Add a reaction
-- 🚧 View post reactions
-- 🚧 Comment on a post
-- 🚧 View post comments
-- 🚧 Mirror a post
-- 🚧 View a post's mirrors
+- ✅ Follow a profile
+  - ❌ Follow user who has a follow module setup
+- 🚧 Unfollow a profile (Bugged atm)
+- ❌ Choose which collection module to use on a post
+- ❌ Collect a post
+- ❌ View a post's collection info (price, supply, etc.)
+- ✅ Add a reaction
+  - ❌ Live updating reaction count
+- ❌ View post reactions
+- ❌ Comment on a post
+- ❌ View post comments
+- ❌ Mirror a post
+- ❌ View a post's mirrors
+- ❌ Hide post
+- ❌ Report post
+- ❌ Search publications
+- ❌ Notifications
 
 ### Future
 
 - 🤔 Use dispatcher for all transactions to have gasless transactions
 - 🤔 Create Lens Profiles directly from Chainblog
-- 🤔E2EE Messaging using [XMTP](https://xmtp.org/)
+- 🤔 E2EE Messaging using [XMTP](https://xmtp.org/)
+- 🤔 Recommended profiles suggestion after following a user
