@@ -3,6 +3,7 @@ import React from "react";
 import { usePublicationsQuery } from "../../graphql/generated";
 import FeedItemComponent from "../feed/FeedItem";
 import styles from "./post.module.css";
+import feedStyles from "../feed/feed.module.css";
 
 type Props = {
   publicationId: string;
@@ -30,7 +31,12 @@ export default function CommentSection({ publicationId }: Props) {
           <Typography variant="body1">Loading comments...</Typography>
         ) : (
           comments?.publications.items.map((comment) => (
-            <Grid item xs={12} key={comment.id}>
+            <Grid
+              item
+              xs={12}
+              key={comment.id}
+              className={feedStyles.feedItemWrapper}
+            >
               {/* @ts-ignore TODO: Type is wrong here. */}
               <FeedItemComponent post={comment} />
             </Grid>
