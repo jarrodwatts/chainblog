@@ -176,3 +176,11 @@
   border-radius: 16px;
   border: 1px solid rgba(234, 234, 234, 0.3);
 }
+
+/* Comment Section */
+
+.commentSection {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 5em;
+}

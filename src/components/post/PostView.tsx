@@ -6,6 +6,7 @@ import PostHeader from "./PostHeader";
 import styles from "./post.module.css";
 import theme from "../../lib/mui/theme";
 import PostSidebar from "./PostSidebar";
+import CommentSection from "./CommentSection";
 
 type Props = {
   publication: PublicationQuery;
@@ -24,14 +25,14 @@ export default function PostView({ publication }: Props) {
     >
       <Container maxWidth="md" className={styles.postView}>
         <PostHeader publication={publication} />
-
         <Divider className={styles.divider} />
-
         <div className={styles.postContent}>
           <MarkdownPreview
             content={publication?.publication?.metadata?.content ?? ""}
           />
         </div>
+
+        <CommentSection publicationId={publication?.publication?.id ?? ""} />
 
         {matches && <PostSidebar publication={publication} />}
       </Container>

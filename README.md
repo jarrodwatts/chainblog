@@ -58,9 +58,9 @@ A decentralized blogging platform built on top of the [Lens Protocol](https://ww
 - ❌ View a post's collection info (price, supply, etc.)
 - ✅ Add a reaction
   - ❌ Live updating reaction count
-- ❌ View post reactions
+- ✅ View post reactions
 - ❌ Comment on a post
-- ❌ View post comments
+- ✅ View post comments
 - ❌ Mirror a post
 - ❌ View a post's mirrors
 - ❌ Hide post

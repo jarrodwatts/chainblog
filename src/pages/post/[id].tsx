@@ -28,6 +28,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   })();
 
+  console.log(PublicationDocument);
+
   return {
     props: {
       publication: publicationQueryResult,

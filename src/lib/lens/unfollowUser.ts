@@ -68,17 +68,13 @@ async function unfollow(
   const { v, r, s } = splitSignature(signedResult.signature.signature);
   const value = signedResult.result.typedData.value;
 
-  const sig = {
+  // TODO: This function errors out: Message: Internal JSON-RPC error.
+  const tx = await contract.call("burnWithSig", value.tokenId, {
     v,
     r,
     s,
     deadline: value.deadline,
-  };
-  console.log("sig", sig);
-  console.log("tokenid:", value.tokenId);
-
-  // TODO: This function errors out: Message: Internal JSON-RPC error.
-  const tx = await contract.call("burnWithSig", value.tokenId, sig);
+  });
 
   console.log("unfollowed", tx);
 }
@@ -93,6 +89,7 @@ export function useUnfollowUser() {
     (userId: string) => unfollow(sdk, address, contract, userId),
     {
       onError: async (error) => {
+        console.error(error);
         setModalState({
           type: "error",
           message: "Failed to unfollow user.",

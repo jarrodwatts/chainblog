@@ -4,14 +4,16 @@ import LoadingSkeleton from "./LoadingSkeleton";
 import styles from "./feed.module.css";
 import FeedItemComponent from "./FeedItem";
 import useDynamicFeed from "../../lib/useDynamicFeed";
-import useLensUser from "../../lib/auth/useLensUser";
+import { useLensUserContext } from "../../context/LensUserContext";
 
 export default function FeedController() {
   const { personalFeedQuery, defaultFeedQuery } = useDynamicFeed();
 
+  console.log(defaultFeedQuery.data);
+
   console.log(personalFeedQuery.data);
 
-  const { isSignedIn, hasProfile } = useLensUser();
+  const { isSignedIn, hasProfile } = useLensUserContext();
 
   // Loading user's personalised feed
   if (isSignedIn && hasProfile && personalFeedQuery?.isLoading) {
@@ -29,7 +31,7 @@ export default function FeedController() {
   }
 
   // Loaded the user's personalised feed
-  if (personalFeedQuery?.data) {
+  if (isSignedIn && personalFeedQuery?.data) {
     return (
       <Container maxWidth="md" className={styles.feedContainer}>
         <Grid

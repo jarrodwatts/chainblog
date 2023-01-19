@@ -6,9 +6,11 @@
   background: linear-gradient(-45deg, #0d0a1e, #090310, #0d0d18, #0e0b1f);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   align-items: center;
   text-align: center;
+  padding-bottom: 256px;
 }
 
 @keyframes gradient {
@@ -39,7 +41,6 @@
   text-decoration: none;
   width: 240px;
   height: 64px;
-  /* Background gradient of button between yellow and green */
   background: linear-gradient(90deg, #9e61ff 0%, #619bff 100%) right;
   background-size: 200% 100%;
   color: #fff;
@@ -56,6 +57,10 @@
 .ctaLink {
   text-decoration: none;
   color: inherit;
+}
+
+.ctaLink:hover {
+  text-decoration: underline;
 }
 
 .subheader {
@@ -101,4 +106,65 @@
       background-position: var(--bg-size) 0;
     }
   }
+}
+
+.markdownEditor {
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  border-radius: 8px;
+  padding-top: 16px;
+}
+
+.markdownPreview {
+  outline: 1px solid #9e61ff;
+  border-radius: 8px;
+  padding-top: 16px;
+}
+
+.secondaryButton {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #0d0a1e;
+  border: 1px solid #0d0a1e;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  height: 64px;
+  background: linear-gradient(90deg, #f5f5f5 0%, #f6f5f6 100%) right;
+  background-size: 200% 100%;
+  transition: all 0.5s ease;
+}
+
+.secondaryButton:hover {
+  background-position: left;
+  transition: all 0.5s ease;
+  /* increase in size */
+  transform: scale(1.1);
+}
+
+.thirdaryButton {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #f5f5f5;
+  border: 1px solid #f5f5f5;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  height: 64px;
+  background: linear-gradient(90deg, #0d0a1e 0%, #0d0a1f 100%) right;
+  background-size: 200% 100%;
+  transition: all 0.5s ease;
+}
+
+.thirdaryButton:hover {
+  background-position: left;
+  transition: all 0.5s ease;
+  /* increase in size */
+  transform: scale(1.1);
 }

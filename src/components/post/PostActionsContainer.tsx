@@ -43,8 +43,6 @@ export default function PostActionsContainer({ publication }: Props) {
 
   const { setSnackbarState } = useSnackbarContext();
 
-  console.log(setSnackbarState);
-
   const actions = [
     {
       label: "Upvote",
@@ -127,7 +125,6 @@ export default function PostActionsContainer({ publication }: Props) {
             .share({
               title: publication?.publication?.metadata?.name || "",
               text: publication?.publication?.metadata?.content || "",
-              url: window.location.href,
             })
             .then(() => console.log("Successful share"))
             .catch((error) => console.log("Error sharing", error));

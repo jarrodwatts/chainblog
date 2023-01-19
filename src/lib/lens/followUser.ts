@@ -51,12 +51,9 @@ async function follow(
   userId: string | undefined
 ) {
   if (!sdk || !contract || !followerAddress || !userId) {
-    console.log("wtf");
     // TODO handle error
     return;
   }
-
-  console.log("Here");
 
   const signedResult = await signFollowTypedData(sdk, {
     follow: [
@@ -65,8 +62,6 @@ async function follow(
       },
     ],
   });
-
-  console.log("create follow: signedResult", signedResult);
 
   const { v, r, s } = splitSignature(signedResult.signature.signature);
   const value = signedResult.result.typedData.value;

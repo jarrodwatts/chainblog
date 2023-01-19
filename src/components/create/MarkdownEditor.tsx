@@ -11,18 +11,20 @@ type Props = {
   mdInputRef: React.RefObject<HTMLTextAreaElement>;
   mdValue: string;
   setMdValue: (value: string) => void;
+  minRows?: number;
 };
 
 export default function MarkdownEditor({
   mdInputRef,
   mdValue,
   setMdValue,
+  minRows = 40,
 }: Props) {
   return (
     <InputBase
       inputRef={mdInputRef}
       multiline
-      minRows={40}
+      minRows={minRows}
       fullWidth
       placeholder="Write your story..."
       value={mdValue}
