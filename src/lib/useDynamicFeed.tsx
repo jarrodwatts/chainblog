@@ -1,4 +1,9 @@
-import { PublicationSortCriteria } from "../graphql/generated";
+import {
+  FeedEventItemType,
+  PublicationMainFocus,
+  PublicationSortCriteria,
+  PublicationTypes,
+} from "../graphql/generated";
 import useLensUser from "./auth/useLensUser";
 import useInfiniteExplorePublications from "./useInfiniteExplorePublications";
 import useInfiniteProfileFeedQuery from "./useInfiniteProfileFeed";
@@ -17,9 +22,9 @@ export default function useDynamicFeed() {
       request: {
         profileId: lensUser?.defaultProfile?.id,
         metadata: {
-          // mainContentFocus: [PublicationMainFocus.Article],
+          mainContentFocus: [PublicationMainFocus.Article],
         },
-        // feedEventItemTypes: [FeedEventItemType.Post],
+        feedEventItemTypes: [FeedEventItemType.Post],
         /**
          * https://docs.lens.xyz/docs/profile-feed
          * Please note the limit is the number of EVENTS you get back.
@@ -52,9 +57,9 @@ export default function useDynamicFeed() {
         sortCriteria: PublicationSortCriteria.TopCollected,
         limit: 50,
         metadata: {
-          // mainContentFocus: [PublicationMainFocus.Article],
+          mainContentFocus: [PublicationMainFocus.Article],
         },
-        // publicationTypes: [PublicationTypes.Post],
+        publicationTypes: [PublicationTypes.Post],
       },
     },
     {

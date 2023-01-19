@@ -16,54 +16,54 @@ export default function FeedController() {
   const { isSignedIn, hasProfile } = useLensUserContext();
 
   // Loading user's personalised feed
-  if (isSignedIn && hasProfile && personalFeedQuery?.isLoading) {
-    return (
-      <Container maxWidth="md" className={styles.feedContainer}>
-        <Grid container direction="column" spacing={2}>
-          {[...Array(12)].map((_, i) => (
-            <Grid item xs={12} key={i} className={styles.feedItemWrapper}>
-              <LoadingSkeleton />
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    );
-  }
+  // if (isSignedIn && hasProfile && personalFeedQuery?.isLoading) {
+  //   return (
+  //     <Container maxWidth="md" className={styles.feedContainer}>
+  //       <Grid container direction="column" spacing={2}>
+  //         {[...Array(12)].map((_, i) => (
+  //           <Grid item xs={12} key={i} className={styles.feedItemWrapper}>
+  //             <LoadingSkeleton />
+  //           </Grid>
+  //         ))}
+  //       </Grid>
+  //     </Container>
+  //   );
+  // }
 
   // Loaded the user's personalised feed
-  if (isSignedIn && personalFeedQuery?.data) {
-    return (
-      <Container maxWidth="md" className={styles.feedContainer}>
-        <Grid
-          container
-          direction="column"
-          spacing={2}
-          className={styles.feedItemWrapper}
-        >
-          {
-            // Get all the posts out of all the pages and map them
-            personalFeedQuery.data?.pages.flatMap((page) =>
-              page.feed.items.map((post) => (
-                <FeedItemComponent post={post.root} key={post.root.id} />
-              ))
-            )
-          }
-        </Grid>
+  // if (isSignedIn && personalFeedQuery?.data) {
+  //   return (
+  //     <Container maxWidth="md" className={styles.feedContainer}>
+  //       <Grid
+  //         container
+  //         direction="column"
+  //         spacing={2}
+  //         className={styles.feedItemWrapper}
+  //       >
+  //         {
+  //           // Get all the posts out of all the pages and map them
+  //           personalFeedQuery.data?.pages.flatMap((page) =>
+  //             page.feed.items.map((post) => (
+  //               <FeedItemComponent post={post.root} key={post.root.id} />
+  //             ))
+  //           )
+  //         }
+  //       </Grid>
 
-        {personalFeedQuery.isFetchingNextPage ? (
-          <Typography variant="body2">Loading more...</Typography>
-        ) : personalFeedQuery.hasNextPage ? (
-          <Button onClick={() => personalFeedQuery.fetchNextPage()}>
-            Load more
-          </Button>
-        ) : (
-          <Typography variant="body2" className={styles.reachedEnd}>
-            You&apos;ve reached the end!
-          </Typography>
-        )}
-      </Container>
-    );
-  }
+  //       {personalFeedQuery.isFetchingNextPage ? (
+  //         <Typography variant="body2">Loading more...</Typography>
+  //       ) : personalFeedQuery.hasNextPage ? (
+  //         <Button onClick={() => personalFeedQuery.fetchNextPage()}>
+  //           Load more
+  //         </Button>
+  //       ) : (
+  //         <Typography variant="body2" className={styles.reachedEnd}>
+  //           You&apos;ve reached the end!
+  //         </Typography>
+  //       )}
+  //     </Container>
+  //   );
+  // }
 
   // Loaded the default feed
   if (defaultFeedQuery?.data) {

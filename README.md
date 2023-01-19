@@ -36,6 +36,28 @@ A decentralized blogging platform built on top of the [Lens Protocol](https://ww
 
 ## Roadmap
 
+### MVP
+
+- ✅ Sign in with Lens
+- ✅ Create a post
+- ✅ View a feed of posts
+- ✅ View a feed of posts from creators you follow
+- ✅ View a profile
+- ✅ View a profile's posts
+- ✅ View an individual post
+- ✅ Discover profiles
+- ✅ Follow a profile
+- 🚧 Unfollow a profile (Bugged atm)
+- ❌ Collect a post
+- ❌ View a post's collection info (price, supply, etc.)
+- ✅ Add a reaction
+- ✅ View post reactions
+- ❌ Comment on a post
+- ✅ View post comments
+- ❌ Mirror a post
+
+### Future
+
 - ✅ Sign in with Lens
 - ✅ Create a post
   - ❌ Wait for transaction to be indexed

@@ -11,9 +11,9 @@
 }
 
 .feedItem {
+  width: 100%;
   text-decoration: none;
   color: inherit;
-  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
