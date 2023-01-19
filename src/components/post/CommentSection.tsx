@@ -31,6 +31,7 @@ export default function CommentSection({ publicationId }: Props) {
         ) : (
           comments?.publications.items.map((comment) => (
             <Grid item xs={12} key={comment.id}>
+              {/* @ts-ignore TODO: Type is wrong here. */}
               <FeedItemComponent post={comment} />
             </Grid>
           ))
