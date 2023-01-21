@@ -23,6 +23,7 @@ import { CHAIN_ID } from "../../../const/blockchain";
 import { useGlobalInformationModalContext } from "../../context/GlobalInformationModalContext";
 import { useSnackbarContext } from "../../context/SnackbarContext";
 import { useQueryClient } from "@tanstack/react-query";
+import { useMirrorPost } from "../../lib/lens/mirrorPost";
 
 type Props = {
   publication: PublicationQuery;
@@ -39,7 +40,11 @@ export default function PostActionsContainer({ publication }: Props) {
   const networkMismatch = useNetworkMismatch();
   const { setModalState } = useGlobalInformationModalContext();
 
-  const { mutateAsync, isLoading: addingReaction } = useAddReactionMutation();
+  const { mutateAsync: addReaction, isLoading: addingReaction } =
+    useAddReactionMutation();
+
+  const { mutateAsync: createMirror, isLoading: creatingMirror } =
+    useMirrorPost();
 
   const { setSnackbarState } = useSnackbarContext();
 
@@ -48,7 +53,7 @@ export default function PostActionsContainer({ publication }: Props) {
       label: "Upvote",
       icon: <ThumbUpIcon />,
       onClick: async () => {
-        return await mutateAsync(
+        return await addReaction(
           {
             request: {
               publicationId: publication.publication?.id,
@@ -78,7 +83,7 @@ export default function PostActionsContainer({ publication }: Props) {
       label: "Downvote",
       icon: <ThumbDownIcon />,
       onClick: async () => {
-        return await mutateAsync(
+        return await addReaction(
           {
             request: {
               publicationId: publication.publication?.id,
@@ -111,6 +116,29 @@ export default function PostActionsContainer({ publication }: Props) {
     {
       label: "Mirror",
       icon: <RepeatIcon />,
+      onClick: async () => {
+        return await createMirror(
+          {
+            publicationId: publication.publication?.id,
+            userId: lensUser?.defaultProfile?.id,
+          },
+          {
+            onError: async (error) => {
+              setModalState({
+                type: "error",
+                message: ((error as Error).message as string) || "",
+              });
+            },
+            onSuccess() {
+              setSnackbarState({
+                open: true,
+                severity: "success",
+                message: "Mirrored post successfully!",
+              });
+            },
+          }
+        );
+      },
     },
     {
       label: "Comment",

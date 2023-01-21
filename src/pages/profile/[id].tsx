@@ -6,6 +6,7 @@ import {
   ProfileDocument,
   ProfileQuery,
   ProfileQueryVariables,
+  PublicationMainFocus,
   PublicationsDocument,
   PublicationsQuery,
   PublicationsQueryVariables,
@@ -46,7 +47,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     request: {
       profileId: profileQueryResult.profile?.id,
       metadata: {
-        // mainContentFocus: [PublicationMainFocus.Article],
+        mainContentFocus: [PublicationMainFocus.Article],
       },
       publicationTypes: [PublicationTypes.Post],
     },

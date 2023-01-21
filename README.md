@@ -54,7 +54,7 @@ A decentralized blogging platform built on top of the [Lens Protocol](https://ww
 - ✅ View post reactions
 - ❌ Comment on a post
 - ✅ View post comments
-- ❌ Mirror a post
+- ✅ Mirror a post
 
 ### Future
 
@@ -90,9 +90,14 @@ A decentralized blogging platform built on top of the [Lens Protocol](https://ww
 - ❌ Search publications
 - ❌ Notifications
 
-### Future
+### More Future
 
 - 🤔 Use dispatcher for all transactions to have gasless transactions
 - 🤔 Create Lens Profiles directly from Chainblog
 - 🤔 E2EE Messaging using [XMTP](https://xmtp.org/)
 - 🤔 Recommended profiles suggestion after following a user
+
+### Known Issues
+
+- Default profile is assumed to be set everywhere
+- Unfollow is bugged

@@ -9,9 +9,11 @@ import { useLensUserContext } from "../../context/LensUserContext";
 export default function FeedController() {
   const { personalFeedQuery, defaultFeedQuery } = useDynamicFeed();
 
-  console.log(defaultFeedQuery.data);
-
-  console.log(personalFeedQuery.data);
+  console.log(
+    defaultFeedQuery.data,
+    defaultFeedQuery.error,
+    defaultFeedQuery.isLoading
+  );
 
   const { isSignedIn, hasProfile } = useLensUserContext();
 
